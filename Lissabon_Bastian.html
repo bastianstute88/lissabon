@@ -623,29 +623,57 @@ const DOC_SLOTS = [
 
 const DOC_EMBEDDED = {};
 
-function getDocStore(){try{return JSON.parse(localStorage.getItem('lisbon_docs_v1')||'{}')}catch{return{}}}
-function saveDocStore(s){try{localStorage.setItem('lisbon_docs_v1',JSON.stringify(s))}catch(e){alert('Speicher voll – bitte ein Dokument löschen.')}}
+// IndexedDB — kein Speicherlimit
+let _docDB;
+function _openDB(){
+  return new Promise((res,rej)=>{
+    if(_docDB)return res(_docDB);
+    const req=indexedDB.open('lissabon_docs_v1',1);
+    req.onupgradeneeded=e=>e.target.result.createObjectStore('docs',{keyPath:'id'});
+    req.onsuccess=e=>{_docDB=e.target.result;res(_docDB);};
+    req.onerror=e=>rej(e);
+  });
+}
+function _dbGetAll(){
+  return _openDB().then(db=>new Promise((res,rej)=>{
+    const req=db.transaction('docs','readonly').objectStore('docs').getAll();
+    req.onsuccess=()=>{const m={};req.result.forEach(r=>m[r.id]=r.v);res(m);};
+    req.onerror=e=>rej(e);
+  }));
+}
+function _dbPut(id,v){
+  return _openDB().then(db=>new Promise((res,rej)=>{
+    const req=db.transaction('docs','readwrite').objectStore('docs').put({id,v});
+    req.onsuccess=()=>res();req.onerror=e=>rej(e);
+  }));
+}
+function _dbDel(id){
+  return _openDB().then(db=>new Promise((res,rej)=>{
+    const req=db.transaction('docs','readwrite').objectStore('docs').delete(id);
+    req.onsuccess=()=>res();req.onerror=e=>rej(e);
+  }));
+}
 
-function renderDocs(){
-  const store=getDocStore();
+async function renderDocs(){
+  const store=await _dbGetAll();
   const grid=document.getElementById('doc-grid');
   if(!grid)return;
   grid.innerHTML=DOC_SLOTS.map(slot=>{
-    if(slot.divider) return `<div style="grid-column:1/-1;height:1px;background:var(--border);margin:6px 0 2px"></div>`;
-    const entry=store[slot.id] || DOC_EMBEDDED[slot.id];
+    if(slot.divider)return`<div style="grid-column:1/-1;height:1px;background:var(--border);margin:6px 0 2px"></div>`;
+    const entry=store[slot.id]||DOC_EMBEDDED[slot.id];
     const isEmbedded=!store[slot.id]&&!!DOC_EMBEDDED[slot.id];
     const lbl=slot.label.replace(/\n/g,'<br>');
     if(entry){
       const thumb=entry.pdf
         ?`<div class="doc-thumb-empty" onclick="viewDoc('${slot.id}')"><span>📄</span></div>`
         :`<img class="doc-thumb" src="${entry.data}" onclick="viewDoc('${slot.id}')" alt="${slot.label}">`;
-      return `<div class="doc-slot has-img">
+      return`<div class="doc-slot has-img">
         ${thumb}
         <div class="doc-label">${lbl}</div>
         ${isEmbedded?'':`<button class="doc-del" onclick="deleteDoc('${slot.id}')">✕</button>`}
       </div>`;
     } else {
-      return `<div class="doc-slot" onclick="triggerDocUpload('${slot.id}')">
+      return`<div class="doc-slot" onclick="triggerDocUpload('${slot.id}')">
         <div class="doc-thumb-empty"><span>${slot.icon}</span></div>
         <div class="doc-label">${lbl}</div>
         <div class="doc-upload-hint">Tippen zum Hinzufügen</div>
@@ -658,10 +686,7 @@ function triggerDocUpload(id){
   const inp=document.createElement('input');
   inp.type='file';
   inp.accept='image/*,application/pdf';
-  inp.onchange=function(){
-    if(!inp.files||!inp.files[0])return;
-    compressAndStore(id,inp.files[0]);
-  };
+  inp.onchange=function(){if(!inp.files||!inp.files[0])return;compressAndStore(id,inp.files[0]);};
   inp.click();
 }
 
@@ -669,10 +694,7 @@ function compressAndStore(id,file){
   const reader=new FileReader();
   reader.onload=function(e){
     if(file.type==='application/pdf'){
-      const store=getDocStore();
-      store[id]={data:e.target.result,pdf:true};
-      saveDocStore(store);
-      renderDocs();
+      _dbPut(id,{data:e.target.result,pdf:true}).then(renderDocs);
       return;
     }
     const img=new Image();
@@ -684,11 +706,7 @@ function compressAndStore(id,file){
       const canvas=document.createElement('canvas');
       canvas.width=w;canvas.height=h;
       canvas.getContext('2d').drawImage(img,0,0,w,h);
-      const data=canvas.toDataURL('image/jpeg',0.78);
-      const store=getDocStore();
-      store[id]={data};
-      saveDocStore(store);
-      renderDocs();
+      _dbPut(id,{data:canvas.toDataURL('image/jpeg',0.78)}).then(renderDocs);
     };
     img.src=e.target.result;
   };
@@ -697,14 +715,11 @@ function compressAndStore(id,file){
 
 function deleteDoc(id){
   if(!confirm('Dokument löschen?'))return;
-  const store=getDocStore();
-  delete store[id];
-  saveDocStore(store);
-  renderDocs();
+  _dbDel(id).then(renderDocs);
 }
 
-function viewDoc(id){
-  const store=getDocStore();
+async function viewDoc(id){
+  const store=await _dbGetAll();
   const entry=store[id]||DOC_EMBEDDED[id];
   if(!entry)return;
   const slot=DOC_SLOTS.find(s=>s.id===id);
