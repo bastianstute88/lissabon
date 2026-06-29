@@ -1099,6 +1099,7 @@ document.addEventListener('keydown',e=>{if(e.key==='Escape')closeDocViewer();});
 renderDocs();
 
 </script>
+<script>
 // ── VORBUCHEN ────────────────────────────────────────────────────────────────
 const BOOK_LIST = [
   {id:'b01', name:'Palácio da Pena', day:'Sa, 7. Nov · 09:30',
@@ -1139,6 +1140,7 @@ function renderBook(){
 }
 function toggleBook(id){const s=getBookState();s[id]=!s[id];saveBookState(s);renderBook();}
 renderBook();
+</script>
 
 <script>
 if('serviceWorker' in navigator){
