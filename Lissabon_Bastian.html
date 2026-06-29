@@ -1104,19 +1104,19 @@ renderDocs();
 const BOOK_LIST = [
   {id:'b01', name:'Palácio da Pena', day:'Sa, 7. Nov · 09:30',
    note:'Samstag — unbedingt vorab buchen! An Wochenenden schnell ausgebucht.',
-   link:'patrimoniocultural.gov.pt → Pena', urgent:true},
+   link:'patrimoniocultural.gov.pt → Tickets', url:'https://patrimoniocultural.gov.pt/en/museus-e-monumentos/parques-de-sintra/', urgent:true},
   {id:'b02', name:'Quinta da Regaleira', day:'Sa, 7. Nov · 11:45',
    note:'Empfohlen vorab zu buchen — Schlange kann sehr lang sein.',
-   link:'quintadaregaleira.pt → Online Tickets', urgent:false},
+   link:'quintadaregaleira.pt → Visitas', url:'https://www.quintadaregaleira.pt/en/visitas/', urgent:false},
   {id:'b03', name:'Mosteiro dos Jerónimos', day:'Fr, 6. Nov · 10:00',
    note:'Empfohlen — Warteschlange morgens oft sehr lang.',
-   link:'patrimoniocultural.gov.pt → Jerónimos', urgent:false},
+   link:'patrimoniocultural.gov.pt → Tickets', url:'https://patrimoniocultural.gov.pt/en/museus-e-monumentos/mosteiro-dos-jeronimos/', urgent:false},
   {id:'b04', name:'Torre de Belém', day:'Fr, 6. Nov · 13:00',
    note:'Empfohlen — freitagnachmittags häufig voll.',
-   link:'patrimoniocultural.gov.pt → Torre de Belém', urgent:false},
+   link:'patrimoniocultural.gov.pt → Tickets', url:'https://patrimoniocultural.gov.pt/en/museus-e-monumentos/torre-de-belem/', urgent:false},
   {id:'b05', name:'Cervejaria Trindade — Tisch', day:'Sa, 7. Nov · 19:30',
    note:'Samstagabend — unbedingt reservieren! Ältestes Restaurant Lissabons.',
-   link:'Tel: +351 21 342 35 06', urgent:true},
+   link:'📞 +351 21 342 35 06', url:'tel:+351213423506', urgent:true},
 ];
 function getBookState(){try{return JSON.parse(localStorage.getItem('lisbon_book_v1')||'{}')}catch{return{}}}
 function saveBookState(s){localStorage.setItem('lisbon_book_v1',JSON.stringify(s))}
@@ -1132,7 +1132,7 @@ function renderBook(){
       <div style="flex:1">
         <div class="vorb-name">${item.name}${item.urgent&&!done?' <span style="color:#e74c3c;font-size:11px;font-weight:600">● dringend</span>':''}</div>
         <div class="vorb-note">${item.day}<br>${item.note}</div>
-        <div class="vorb-link">${item.link}</div>
+        <a class="vorb-link" href="${item.url}" target="_blank" onclick="event.stopPropagation()">${item.link}</a>
       </div>
     </div>`;
   });
