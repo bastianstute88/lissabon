@@ -149,6 +149,37 @@ body{background:var(--bg);color:var(--text);font-family:-apple-system,BlinkMacSy
 
 
 
+
+.vorb-item{display:flex;align-items:flex-start;gap:10px;padding:12px 0;border-bottom:1px solid var(--border);cursor:pointer}
+.vorb-item:last-child{border-bottom:none}
+.vorb-item.done .vorb-name{text-decoration:line-through;color:var(--muted)}
+.vorb-checkbox{width:20px;height:20px;border:2px solid var(--muted);border-radius:5px;flex-shrink:0;display:flex;align-items:center;justify-content:center;transition:.15s;margin-top:2px}
+.vorb-item.done .vorb-checkbox{background:var(--green);border-color:var(--green)}
+.vorb-item.done .vorb-checkbox::after{content:'✓';color:#fff;font-size:12px;font-weight:700}
+.vorb-name{font-size:14px;font-weight:600;color:var(--text)}
+.vorb-note{font-size:12px;color:var(--muted);margin-top:3px;line-height:1.5}
+.vorb-link{font-size:12px;color:var(--gold);margin-top:4px}
+.foto-day{margin-bottom:18px}
+.foto-day-title{font-size:12px;font-weight:700;color:var(--muted);text-transform:uppercase;letter-spacing:.06em;margin-bottom:8px;padding-bottom:4px;border-bottom:1px solid var(--border)}
+.foto-loc{margin-bottom:12px;padding:10px 12px;background:var(--card);border:1px solid var(--border);border-radius:10px}
+.foto-loc-title{font-size:13px;font-weight:700;color:var(--text);margin-bottom:5px}
+.foto-tip{font-size:12px;color:var(--muted);line-height:1.65;padding-left:8px;border-left:2px solid var(--gold)}
+.notfall-row{display:flex;align-items:flex-start;gap:12px;padding:11px 0;border-bottom:1px solid var(--border)}
+.notfall-row:last-child{border-bottom:none}
+.notfall-icon{font-size:22px;width:32px;text-align:center;flex-shrink:0;margin-top:1px}
+.notfall-info{flex:1}
+.notfall-label{font-size:11px;color:var(--muted);margin-bottom:2px}
+.notfall-val{font-size:14px;font-weight:600;color:var(--text)}
+.notfall-val a{color:var(--gold);text-decoration:none}
+.notfall-sub{font-size:12px;color:var(--muted);margin-top:2px}
+.phrase-cat{margin-bottom:18px}
+.phrase-cat-title{font-size:12px;font-weight:700;color:var(--muted);text-transform:uppercase;letter-spacing:.06em;margin-bottom:8px}
+.phrase-row{display:flex;align-items:flex-start;gap:10px;padding:8px 0;border-bottom:1px solid var(--border)}
+.phrase-row:last-child{border-bottom:none}
+.phrase-pt{font-size:13px;font-weight:700;color:var(--gold);min-width:150px;flex-shrink:0}
+.phrase-right{}
+.phrase-de{font-size:13px;color:var(--text)}
+.phrase-pron{font-size:11px;color:var(--muted);margin-top:2px}
 </style>
 </head>
 <body>
@@ -318,6 +349,15 @@ body{background:var(--bg);color:var(--text);font-family:-apple-system,BlinkMacSy
   <div class="tl">
     <div class="ti"><div class="t-time">07:00</div><div class="t-card"><div class="t-ttl">☕ Frühstück</div></div></div>
     <div class="ti hi"><div class="t-time">07:30</div><div class="t-card hi"><div class="t-ttl">🚆 Zug nach <span class="al" onclick="openModal('sintra')">Sintra</span></div><div class="t-note">10 Min. Fußweg zum Rossio · Linha de Sintra · ca. 40 Min.</div></div></div>
+    <div style="margin:6px 0 12px 44px;background:rgba(212,168,67,.08);border:1px solid rgba(212,168,67,.25);border-radius:10px;padding:10px 12px;font-size:12px;line-height:1.8;color:var(--text)">
+      <div style="font-weight:700;color:var(--gold);margin-bottom:5px">🚌 Sintra Logistik</div>
+      <div>🚆 <b>Rossio → Sintra:</b> Linha de Sintra · alle 20 Min. · ca. 40 Min. · 2,50 € p.P.</div>
+      <div>🚌 <b>Bahnhof → Pena:</b> Bus 434 Rundkurs · alle 15–20 Min. · ca. 15 Min. · ~4 € p.P.</div>
+      <div style="padding-left:18px;color:var(--muted)">Alternativ: Tuk-Tuk ab Bahnhof · ca. 15–20 € gesamt · mit Kindern empfohlen!</div>
+      <div>🏰 <b>Pena → Regaleira:</b> Bus 434 weiterfahren (Rundkurs) · ca. 10 Min.</div>
+      <div>🚆 <b>Regaleira → Bahnhof:</b> Bus 434 Richtung Centro · ca. 5 Min.</div>
+      <div style="margin-top:5px;color:var(--muted);font-size:11px">⚡ Tickets beim Fahrer kaufen oder Viva Viagem Karte nutzen</div>
+    </div>
     <div class="ti hi"><div class="t-time">09:30</div><div class="t-card hi book"><div class="t-ttl">🏰 <span class="al" onclick="openModal('pena')">Palácio da Pena</span></div><div class="t-note">Märchenschloss</div></div></div>
     <div class="ti hi"><div class="t-time">11:45</div><div class="t-card hi book"><div class="t-ttl">🌿 <span class="al" onclick="openModal('regaleira')">Quinta da Regaleira</span></div><div class="t-note">Initiationsbrunnen · 27-m-Tunnel in die Erde</div></div></div>
     <div class="ti"><div class="t-time">13:30</div><div class="t-card"><div class="t-ttl">🍽 Mittagessen in Sintra</div><div class="t-note">Ortszentrum · Queijadas de Sintra probieren!<br>Piriquita — seit 1862 · Käse, Zucker & Zimt</div></div></div>
@@ -431,40 +471,40 @@ const PLACEHOLDERS = {
 };
 
 const A = {
-  tram28:{name:'Tram 28E',desc:'Ticket an Bord: ca. 3 € p.P. (~12 € für alle)<br>Viva Viagem Karte: ~1,60 € p.P. (~6,40 €)<br>(Stand 2025)',maps:'https://maps.google.com/?q=Largo+Martim+Moniz+Lissabon'},
-  castelo:{name:'Castelo de São Jorge',desc:'Eintritt: ca. 15 € pro Erwachsenem<br>Kinder unter 10 kostenlos · 10–17 J. ca. 7,50 €<br>Für euch gesamt: ~45 € (Stand 2025)',maps:'https://maps.google.com/?q=Castelo+de+São+Jorge+Lisboa'},
+  tram28:{name:'Tram 28E',desc:'Ticket an Bord: ca. 3 € p.P. (~12 € für alle)<br>Viva Viagem Karte: ~1,60 € p.P. (~6,40 €)<br>(Stand 2025)',hours:'Täglich 06:00–22:00',maps:'https://maps.google.com/?q=Largo+Martim+Moniz+Lissabon'},
+  castelo:{name:'Castelo de São Jorge',desc:'Eintritt: ca. 15 € pro Erwachsenem<br>Kinder unter 10 kostenlos · 10–17 J. ca. 7,50 €<br>Für euch gesamt: ~45 € (Stand 2025)',hours:'Täglich 09:00–18:00 (Nov–Feb) · Letzter Einlass 17:30',maps:'https://maps.google.com/?q=Castelo+de+São+Jorge+Lisboa'},
   alfama:{name:'Alfama',desc:'Souvenirs wie Magneten und Flaggen',maps:'https://maps.google.com/?q=Alfama+Lisboa'},
   'miradouro-graca':{name:'Miradouro da Graça',desc:'',maps:'https://maps.google.com/?q=Miradouro+da+Graça+Lisboa'},
   'miradouro-portas-sol':{name:'Miradouro das Portas do Sol',desc:'',maps:'https://maps.google.com/?q=Miradouro+das+Portas+do+Sol+Lisboa'},
-  se:{name:'Sé de Lisboa',desc:'Eintritt Kirche: kostenlos<br>Kreuzgang: ca. 2,50 € p.P. (Stand 2025)',maps:'https://maps.google.com/?q=Sé+de+Lisboa'},
-  bica:{name:'Elevador da Bica',desc:'Ticket: ~3 € p.P. an Bord<br>Mit Viva Viagem Karte: ~1,60 € p.P.<br>(Stand 2025)',maps:'https://maps.google.com/?q=Elevador+da+Bica+Lisboa'},
-  'santa-justa':{name:'Elevador de Santa Justa',desc:'Eintritt: ca. 5,30 € p.P. (4 Pers. = ~21 €)<br>Mit Viva Viagem Karte: ~1,60 € p.P.<br>(Stand 2025)',maps:'https://maps.google.com/?q=Elevador+de+Santa+Justa+Lisboa'},
-  jeronimos:{name:'Mosteiro dos Jerónimos',desc:'Eintritt: ca. 10 € p.P. · Kinder unter 12 kostenlos<br>Für euch gesamt: ~25 € (Stand 2025)',maps:'https://maps.google.com/?q=Mosteiro+dos+Jeronimos+Lisboa'},
-  torre:{name:'Torre de Belém',desc:'Eintritt: ca. 6 € p.P. · Kinder unter 12 kostenlos<br>Für euch gesamt: ~15 € (Stand 2025)',maps:'https://maps.google.com/?q=Torre+de+Belém+Lisboa'},
-  pasteis:{name:'Pastéis de Belém',desc:'Originalrezept seit 1837 · Warm mit Zimt & Puderzucker',maps:'https://maps.google.com/?q=Pastéis+de+Belém+Rua+de+Belém'},
+  se:{name:'Sé de Lisboa',desc:'Eintritt Kirche: kostenlos<br>Kreuzgang: ca. 2,50 € p.P. (Stand 2025)',hours:'Mo–Sa 09:00–19:00 · So 10:00–17:00',maps:'https://maps.google.com/?q=Sé+de+Lisboa'},
+  bica:{name:'Elevador da Bica',desc:'Ticket: ~3 € p.P. an Bord<br>Mit Viva Viagem Karte: ~1,60 € p.P.<br>(Stand 2025)',hours:'Mo–Fr 07:00–21:00 · Sa 09:00–21:00 · So 11:00–21:00',maps:'https://maps.google.com/?q=Elevador+da+Bica+Lisboa'},
+  'santa-justa':{name:'Elevador de Santa Justa',desc:'Eintritt: ca. 5,30 € p.P. (4 Pers. = ~21 €)<br>Mit Viva Viagem Karte: ~1,60 € p.P.<br>(Stand 2025)',hours:'Täglich 07:30–22:00',maps:'https://maps.google.com/?q=Elevador+de+Santa+Justa+Lisboa'},
+  jeronimos:{name:'Mosteiro dos Jerónimos',desc:'Eintritt: ca. 10 € p.P. · Kinder unter 12 kostenlos<br>Für euch gesamt: ~25 € (Stand 2025)',hours:'Di–So 09:30–17:30 · <span style="color:#e74c3c;font-weight:600">Mo geschlossen!</span>',maps:'https://maps.google.com/?q=Mosteiro+dos+Jeronimos+Lisboa'},
+  torre:{name:'Torre de Belém',desc:'Eintritt: ca. 6 € p.P. · Kinder unter 12 kostenlos<br>Für euch gesamt: ~15 € (Stand 2025)',hours:'Di–So 10:00–17:30 · Letzter Einlass 17:00 · <span style="color:#e74c3c;font-weight:600">Mo geschlossen!</span>',maps:'https://maps.google.com/?q=Torre+de+Belém+Lisboa'},
+  pasteis:{name:'Pastéis de Belém',desc:'Originalrezept seit 1837 · Warm mit Zimt & Puderzucker',hours:'Täglich 08:00–23:00',maps:'https://maps.google.com/?q=Pastéis+de+Belém+Rua+de+Belém'},
   padrao:{name:'Padrão dos Descobrimentos',desc:'',maps:'https://maps.google.com/?q=Padrão+dos+Descobrimentos+Lisboa'},
   ponte:{name:'Ponte 25 de Abril',desc:'',maps:'https://maps.google.com/?q=Ponte+25+de+Abril+Lisboa'},
   sintra:{name:'Sintra',desc:'Zug (Rossio → Sintra): ca. 2,50 € p.P. einfach<br>Für euch ~20 € hin &amp; zurück (Stand 2025)',maps:'https://maps.google.com/?q=Sintra+Portugal'},
-  pena:{name:'Palácio da Pena',desc:'Eintritt (Park + Palast): ca. 14 € Erwachsene · 11,50 € Kinder<br>Für euch gesamt: ~51 € (Stand 2025)',maps:'https://maps.google.com/?q=Palácio+da+Pena+Sintra'},
+  pena:{name:'Palácio da Pena',desc:'Eintritt (Park + Palast): ca. 14 € Erwachsene · 11,50 € Kinder<br>Für euch gesamt: ~51 € (Stand 2025)',hours:'Täglich 09:30–18:00 (Park) · Palast bis 17:00',maps:'https://maps.google.com/?q=Palácio+da+Pena+Sintra'},
   'parque-eduardo':{name:'Parque Eduardo VII',desc:'',maps:'https://maps.google.com/?q=Parque+Eduardo+VII+Lisboa'},
   sintra:{name:'Sintra',desc:'',maps:'https://maps.google.com/?q=Sintra+Portugal'},
-  regaleira:{name:'Quinta da Regaleira',desc:'Eintritt: ca. 10 € Erwachsene · 5,50 € Kinder<br>Für euch gesamt: ~31 € (Stand 2025)',maps:'https://maps.google.com/?q=Quinta+da+Regaleira+Sintra'},
-  cervejaria:{name:'Cervejaria Trindade',desc:'',maps:'https://maps.google.com/?q=Cervejaria+Trindade+Lisboa'},
-  timeout:{name:'Time Out Market',desc:'',maps:'https://maps.google.com/?q=Time+Out+Market+Lisboa'},
+  regaleira:{name:'Quinta da Regaleira',desc:'Eintritt: ca. 10 € Erwachsene · 5,50 € Kinder<br>Für euch gesamt: ~31 € (Stand 2025)',hours:'Täglich 09:30–18:00 (November)',maps:'https://maps.google.com/?q=Quinta+da+Regaleira+Sintra'},
+  cervejaria:{name:'Cervejaria Trindade',desc:'',hours:'Täglich 12:00–23:30',maps:'https://maps.google.com/?q=Cervejaria+Trindade+Lisboa'},
+  timeout:{name:'Time Out Market',desc:'',hours:'So–Mi 10:00–00:00 · Do–Sa 10:00–02:00',maps:'https://maps.google.com/?q=Time+Out+Market+Lisboa'},
   'pink-street':{name:'Pink Street — Rua Nova do Carvalho',desc:'',maps:'https://maps.google.com/?q=Rua+Nova+do+Carvalho+Lisboa'},
   'ribeira-naus':{name:'Ribeira das Naus',desc:'',maps:'https://maps.google.com/?q=Ribeira+das+Naus+Lisboa'},
   rossio:{name:'Rossio — Praça Dom Pedro IV',desc:'Wellenpflaster · A Ginjinha direkt um die Ecke',maps:'https://maps.google.com/?q=Rossio+Praça+Dom+Pedro+IV+Lisboa'},
   'praca-comercio':{name:'Praça do Comércio',desc:'',maps:'https://maps.google.com/?q=Praça+do+Comércio+Lisboa'},
-  arco:{name:'Arco da Rua Augusta',desc:'Aufstieg: ca. 3 € p.P. · Aussichtsplattform über der Baixa',maps:'https://maps.google.com/?q=Arco+da+Rua+Augusta+Lisboa'},
+  arco:{name:'Arco da Rua Augusta',desc:'Aufstieg: ca. 3 € p.P. · Aussichtsplattform über der Baixa',hours:'Täglich 09:00–19:00',maps:'https://maps.google.com/?q=Arco+da+Rua+Augusta+Lisboa'},
   'rua-augusta':{name:'Rua Augusta & Triumphbogen',desc:'',maps:'https://maps.google.com/?q=Arco+da+Rua+Augusta+Lisboa'},
   'miradouro-catarina':{name:'Miradouro de Santa Catarina',desc:'',maps:'https://maps.google.com/?q=Miradouro+de+Santa+Catarina+Lisboa'},
-  panteon:{name:'Panteão Nacional',desc:'Eintritt: ca. 4 € pro Erwachsenem<br>Kinder unter 12 kostenlos<br>(Stand 2025)',maps:'https://maps.google.com/?q=Panteão+Nacional+Lisboa'},
+  panteon:{name:'Panteão Nacional',desc:'Eintritt: ca. 4 € pro Erwachsenem<br>Kinder unter 12 kostenlos<br>(Stand 2025)',hours:'Di–So 10:00–17:00 · <span style="color:#e74c3c;font-weight:600">Mo geschlossen!</span>',maps:'https://maps.google.com/?q=Panteão+Nacional+Lisboa'},
   chiado:{name:'Chiado',desc:'',maps:'https://maps.google.com/?q=Chiado+Lisboa'},
   pessoa:{name:'Fernando Pessoa Statue',desc:'',maps:'https://maps.google.com/?q=Estátua+Fernando+Pessoa+Lisboa'},
   'bairro-alto':{name:'Bairro Alto',desc:'',maps:'https://maps.google.com/?q=Bairro+Alto+Lisboa'},
   'sao-roque':{name:'Igreja São Roque',desc:'',maps:'https://maps.google.com/?q=Igreja+São+Roque+Lisboa'},
   encarnacao:{name:'Igreja de Nossa Senhora da Encarnação',desc:'',maps:'https://maps.google.com/?q=Igreja+Nossa+Senhora+Encarnação+Lisboa'},
-  carmo:{name:'Convento do Carmo',desc:'',maps:'https://maps.google.com/?q=Convento+do+Carmo+Lisboa'},
+  carmo:{name:'Convento do Carmo',desc:'',hours:'Mo–Sa 10:00–17:00 (November)',maps:'https://maps.google.com/?q=Convento+do+Carmo+Lisboa'},
   'sao-carlos':{name:'Teatro Nacional de São Carlos',desc:'',maps:'https://maps.google.com/?q=Teatro+Nacional+São+Carlos+Lisboa'},
   ginjinha:{name:'Ginjinha am Rossio',desc:'Sauerkirschlikör · ca. 1,40 € pro Shot · Seit 1840',maps:'https://maps.google.com/?q=A+Ginjinha+Largo+de+São+Domingos+Lisboa'},
   varandas:{name:'Varandas de Lisboa',desc:'Rua dos Bacalhoeiros 8, 1100-070 Lissabon',maps:'https://maps.google.com/?q=Rua+Afonso+de+Albuquerque+7,+R.+dos+Bacalhoeiros+8,+1100-070+Lisboa'},
@@ -483,7 +523,8 @@ function openModal(key){
   document.getElementById('m-maps').href=d.maps;
   const info=document.getElementById('m-info');
   info.innerHTML='';
-  if(d.transport){info.innerHTML=`<div class="m-info-cell full"><div class="m-info-lbl">🗺 Anfahrt</div><div class="m-info-val">${d.transport}</div></div>`;}
+  if(d.hours){info.innerHTML+=`<div class="m-info-cell full"><div class="m-info-lbl">🕐 Öffnungszeiten</div><div class="m-info-val">${d.hours}</div></div>`;}
+  if(d.transport){info.innerHTML+=`<div class="m-info-cell full"><div class="m-info-lbl">🗺 Anfahrt</div><div class="m-info-val">${d.transport}</div></div>`;}
   const imgEl=document.getElementById('m-img');
   document.getElementById('mo').classList.add('open');
   document.body.style.overflow='hidden';

@@ -149,6 +149,37 @@ body{background:var(--bg);color:var(--text);font-family:-apple-system,BlinkMacSy
 .doc-viewer img{max-width:100%;max-height:85vh;object-fit:contain;border-radius:8px}
 .doc-viewer-close{position:absolute;top:16px;right:16px;background:rgba(255,255,255,.15);border:none;color:#fff;font-size:20px;width:40px;height:40px;border-radius:50%;cursor:pointer}
 .doc-viewer-label{color:rgba(255,255,255,.6);font-size:12px;margin-top:12px}
+
+.vorb-item{display:flex;align-items:flex-start;gap:10px;padding:12px 0;border-bottom:1px solid var(--border);cursor:pointer}
+.vorb-item:last-child{border-bottom:none}
+.vorb-item.done .vorb-name{text-decoration:line-through;color:var(--muted)}
+.vorb-checkbox{width:20px;height:20px;border:2px solid var(--muted);border-radius:5px;flex-shrink:0;display:flex;align-items:center;justify-content:center;transition:.15s;margin-top:2px}
+.vorb-item.done .vorb-checkbox{background:var(--green);border-color:var(--green)}
+.vorb-item.done .vorb-checkbox::after{content:'✓';color:#fff;font-size:12px;font-weight:700}
+.vorb-name{font-size:14px;font-weight:600;color:var(--text)}
+.vorb-note{font-size:12px;color:var(--muted);margin-top:3px;line-height:1.5}
+.vorb-link{font-size:12px;color:var(--gold);margin-top:4px}
+.foto-day{margin-bottom:18px}
+.foto-day-title{font-size:12px;font-weight:700;color:var(--muted);text-transform:uppercase;letter-spacing:.06em;margin-bottom:8px;padding-bottom:4px;border-bottom:1px solid var(--border)}
+.foto-loc{margin-bottom:12px;padding:10px 12px;background:var(--card);border:1px solid var(--border);border-radius:10px}
+.foto-loc-title{font-size:13px;font-weight:700;color:var(--text);margin-bottom:5px}
+.foto-tip{font-size:12px;color:var(--muted);line-height:1.65;padding-left:8px;border-left:2px solid var(--gold)}
+.notfall-row{display:flex;align-items:flex-start;gap:12px;padding:11px 0;border-bottom:1px solid var(--border)}
+.notfall-row:last-child{border-bottom:none}
+.notfall-icon{font-size:22px;width:32px;text-align:center;flex-shrink:0;margin-top:1px}
+.notfall-info{flex:1}
+.notfall-label{font-size:11px;color:var(--muted);margin-bottom:2px}
+.notfall-val{font-size:14px;font-weight:600;color:var(--text)}
+.notfall-val a{color:var(--gold);text-decoration:none}
+.notfall-sub{font-size:12px;color:var(--muted);margin-top:2px}
+.phrase-cat{margin-bottom:18px}
+.phrase-cat-title{font-size:12px;font-weight:700;color:var(--muted);text-transform:uppercase;letter-spacing:.06em;margin-bottom:8px}
+.phrase-row{display:flex;align-items:flex-start;gap:10px;padding:8px 0;border-bottom:1px solid var(--border)}
+.phrase-row:last-child{border-bottom:none}
+.phrase-pt{font-size:13px;font-weight:700;color:var(--gold);min-width:150px;flex-shrink:0}
+.phrase-right{}
+.phrase-de{font-size:13px;color:var(--text)}
+.phrase-pron{font-size:11px;color:var(--muted);margin-top:2px}
 </style>
 </head>
 <body>
@@ -186,6 +217,18 @@ body{background:var(--bg);color:var(--text);font-family:-apple-system,BlinkMacSy
   </button>
   <button class="tab" onclick="showDay(7)">
     <span class="dn">📄</span><span class="dd">Dokumente</span><span class="db"></span>
+  </button>
+  <button class="tab" onclick="showDay(8)">
+    <span class="dn">✅</span><span class="dd">Vorbuchen</span><span class="db"></span>
+  </button>
+  <button class="tab" onclick="showDay(9)">
+    <span class="dn">📷</span><span class="dd">Foto</span><span class="db"></span>
+  </button>
+  <button class="tab" onclick="showDay(10)">
+    <span class="dn">🆘</span><span class="dd">Notfall</span><span class="db"></span>
+  </button>
+  <button class="tab" onclick="showDay(11)">
+    <span class="dn">🇵🇹</span><span class="dd">Phrasen</span><span class="db"></span>
   </button>
 </nav>
 </div><!-- /sticky-top -->
@@ -321,6 +364,15 @@ body{background:var(--bg);color:var(--text);font-family:-apple-system,BlinkMacSy
   <div class="tl">
     <div class="ti"><div class="t-time">07:00</div><div class="t-card"><div class="t-ttl">☕ Frühstück</div></div></div>
     <div class="ti hi"><div class="t-time">07:30</div><div class="t-card hi"><div class="t-ttl">🚆 Zug nach <span class="al" onclick="openModal('sintra')">Sintra</span></div><div class="t-note">10 Min. Fußweg zum Rossio · Linha de Sintra · ca. 40 Min.</div></div></div>
+    <div style="margin:6px 0 12px 44px;background:rgba(212,168,67,.08);border:1px solid rgba(212,168,67,.25);border-radius:10px;padding:10px 12px;font-size:12px;line-height:1.8;color:var(--text)">
+      <div style="font-weight:700;color:var(--gold);margin-bottom:5px">🚌 Sintra Logistik</div>
+      <div>🚆 <b>Rossio → Sintra:</b> Linha de Sintra · alle 20 Min. · ca. 40 Min. · 2,50 € p.P.</div>
+      <div>🚌 <b>Bahnhof → Pena:</b> Bus 434 Rundkurs · alle 15–20 Min. · ca. 15 Min. · ~4 € p.P.</div>
+      <div style="padding-left:18px;color:var(--muted)">Alternativ: Tuk-Tuk ab Bahnhof · ca. 15–20 € gesamt · mit Kindern empfohlen!</div>
+      <div>🏰 <b>Pena → Regaleira:</b> Bus 434 weiterfahren (Rundkurs) · ca. 10 Min.</div>
+      <div>🚆 <b>Regaleira → Bahnhof:</b> Bus 434 Richtung Centro · ca. 5 Min.</div>
+      <div style="margin-top:5px;color:var(--muted);font-size:11px">⚡ Tickets beim Fahrer kaufen oder Viva Viagem Karte nutzen</div>
+    </div>
     <div class="ti hi"><div class="t-time">09:30</div><div class="t-card hi book"><div class="t-ttl">🏰 <span class="al" onclick="openModal('pena')">Palácio da Pena</span></div><div class="t-note">Märchenschloss</div></div></div>
     <div class="ti hi"><div class="t-time">11:45</div><div class="t-card hi book"><div class="t-ttl">🌿 <span class="al" onclick="openModal('regaleira')">Quinta da Regaleira</span></div><div class="t-note">Initiationsbrunnen · 27-m-Tunnel in die Erde</div></div></div>
     <div class="ti"><div class="t-time">13:30</div><div class="t-card"><div class="t-ttl">🍽 Mittagessen in Sintra</div><div class="t-note">Ortszentrum · Queijadas de Sintra probieren!<br>Piriquita — seit 1862 · Käse, Zucker & Zimt</div></div></div>
@@ -370,6 +422,297 @@ body{background:var(--bg);color:var(--text);font-family:-apple-system,BlinkMacSy
   <div class="doc-grid" id="doc-grid"></div>
 </div>
 
+
+<!-- VORBUCHEN -->
+<div class="panel" id="p9">
+  <div class="dh"><h2>Vorbuchen</h2><div class="dh-sub">Online-Tickets &amp; Reservierungen</div></div>
+  <div id="book-container"></div>
+</div>
+
+<!-- FOTO TIPPS -->
+<div class="panel" id="p10">
+  <div class="dh"><h2>Foto Tipps</h2><div class="dh-sub">Tamron 18–300mm · Sony Alpha 6700</div></div>
+
+  <div class="foto-day">
+    <div class="foto-day-title">Do, 5. Nov — Graça · Burg · Alfama · Chiado</div>
+
+    <div class="foto-loc">
+      <div class="foto-loc-title">🌅 Miradouro da Graça — Sonnenaufgang 07:07</div>
+      <div class="foto-tip">
+        50–100mm: Alfama-Dächer mit Panteão und Tejo im Morgendunst<br>
+        200–300mm: Komprimiertes Stadtpanorama Richtung Brücke<br>
+        ⚡ Goldlicht dauert nur 10–15 Min. — frühzeitig dort sein!
+      </div>
+    </div>
+
+    <div class="foto-loc">
+      <div class="foto-loc-title">🏰 Castelo de São Jorge</div>
+      <div class="foto-tip">
+        18–35mm: Innenhöfe, Bögen, Festungsmauern aus der Froschperspektive<br>
+        100–200mm: Stadtpanorama von der Turmkrone Richtung Tejo
+      </div>
+    </div>
+
+    <div class="foto-loc">
+      <div class="foto-loc-title">🏛 Panteão Nacional</div>
+      <div class="foto-tip">
+        18mm Froschperspektive: Kuppelgewölbe symmetrisch von innen<br>
+        24–50mm: Arkaden und Ornamentik der Seitenkapellen
+      </div>
+    </div>
+
+    <div class="foto-loc">
+      <div class="foto-loc-title">🌆 Alfama-Gassen</div>
+      <div class="foto-tip">
+        24–50mm: Enge Gassen mit bunten Azulejo-Kacheln<br>
+        ⚡ Wäsche auf Leinen als Vordergrund oder Rahmen nutzen
+      </div>
+    </div>
+
+    <div class="foto-loc">
+      <div class="foto-loc-title">⛪ Sé de Lisboa</div>
+      <div class="foto-tip">
+        18–24mm: Westfassade — beide Türme + Rosettenfenster<br>
+        35mm: Innenraum-Gewölbe von der Mitte des Kirchenschiffs
+      </div>
+    </div>
+
+    <div class="foto-loc">
+      <div class="foto-loc-title">🌅 Miradouro de Santa Catarina — Sonnenuntergang ~17:30</div>
+      <div class="foto-tip">
+        50–100mm: Ponte 25 de Abril + Tejo im Goldlicht<br>
+        200–300mm: Brücke komprimiert mit Cristo-Rei dahinter
+      </div>
+    </div>
+  </div>
+
+  <div class="foto-day">
+    <div class="foto-day-title">Fr, 6. Nov — Elevadores · Belém</div>
+
+    <div class="foto-loc">
+      <div class="foto-loc-title">📸 Elevador da Bica — 07:30 (kein Gegenlicht!)</div>
+      <div class="foto-tip">
+        50–70mm: Schiene von unten — Ende der Perspektive gibt Lissabon-Ausblick frei<br>
+        ⚡ Frühmorgens kaum Touristen — klassisches Bild noch möglich
+      </div>
+    </div>
+
+    <div class="foto-loc">
+      <div class="foto-loc-title">⛪ Mosteiro dos Jerónimos</div>
+      <div class="foto-tip">
+        18mm Froschperspektive im Kreuzgang: Säulen + Gewölbe — symmetrisch<br>
+        50–100mm: Manuelinische Fassadendetails am Südportal (Skulpturen!)<br>
+        ⚡ Kreuzgang-Innenhof ist das Foto-Highlight
+      </div>
+    </div>
+
+    <div class="foto-loc">
+      <div class="foto-loc-title">🏰 Torre de Belém</div>
+      <div class="foto-tip">
+        50–100mm: Strukturdetails des Turms vom Tejo-Ufer<br>
+        200–300mm: Turm komprimiert mit Tejo-Fläche vom weiter entfernten Ufer<br>
+        ⚡ Nachmittags Gegenlicht — besser am Vormittag fotografieren
+      </div>
+    </div>
+
+    <div class="foto-loc">
+      <div class="foto-loc-title">🌉 Ponte 25 de Abril + Skyline</div>
+      <div class="foto-tip">
+        200–300mm: Kompressions-Aufnahme vom Belém-Ufer — Brücke + Lissabon-Skyline dahinter<br>
+        ⚡ Bester Spot: westlich der Torre, direkt am Tejo-Ufer
+      </div>
+    </div>
+  </div>
+
+  <div class="foto-day">
+    <div class="foto-day-title">Sa, 7. Nov — Sintra</div>
+
+    <div class="foto-loc">
+      <div class="foto-loc-title">🏰 Palácio da Pena</div>
+      <div class="foto-tip">
+        18–24mm: Schloss mit dramatischem November-Himmel (Wolken = Vorteil!)<br>
+        50–100mm: Bunte Türme und Kuppeln im Detail<br>
+        ⚡ November-Grau macht Penas Farben leuchtender — nicht schlimm, wenn bewölkt!
+      </div>
+    </div>
+
+    <div class="foto-loc">
+      <div class="foto-loc-title">🌿 Quinta da Regaleira — Initiationsbrunnen</div>
+      <div class="foto-tip">
+        18mm Froschperspektive tief unten im Schacht — das Bild der Reise!<br>
+        ⚡ ISO hoch (sehr dunkel im Brunnen) · Bildstabilisierung an<br>
+        ⚡ Kurz warten bis der Brunnen frei ist — es lohnt sich
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- NOTFALL -->
+<div class="panel" id="p11">
+  <div class="dh"><h2>Notfall</h2><div class="dh-sub">Wichtige Nummern für Lissabon</div></div>
+
+  <div class="notfall-row">
+    <div class="notfall-icon">🆘</div>
+    <div class="notfall-info">
+      <div class="notfall-label">Notruf Portugal (Polizei, Feuerwehr, Rettung)</div>
+      <div class="notfall-val"><a href="tel:112">112</a></div>
+    </div>
+  </div>
+
+  <div class="notfall-row">
+    <div class="notfall-icon">🏥</div>
+    <div class="notfall-info">
+      <div class="notfall-label">Nächstes Krankenhaus zum Hotel (~1 km)</div>
+      <div class="notfall-val">Hospital de São José</div>
+      <div class="notfall-sub">Rua José António Serrano · ca. 5 Min. mit Uber</div>
+    </div>
+  </div>
+
+  <div class="notfall-row">
+    <div class="notfall-icon">💊</div>
+    <div class="notfall-info">
+      <div class="notfall-label">Apotheke (Farmácia)</div>
+      <div class="notfall-val">Grünes Kreuz suchen</div>
+      <div class="notfall-sub">24h-Apotheken: Rossio-Bereich · Chiado</div>
+    </div>
+  </div>
+
+  <div class="notfall-row">
+    <div class="notfall-icon">🏨</div>
+    <div class="notfall-info">
+      <div class="notfall-label">Hotel Varandas de Lisboa</div>
+      <div class="notfall-val">Rua dos Bacalhoeiros 8</div>
+      <div class="notfall-sub">Tel: → Buchungsbestätigung</div>
+    </div>
+  </div>
+
+  <div class="notfall-row">
+    <div class="notfall-icon">🏛</div>
+    <div class="notfall-info">
+      <div class="notfall-label">Deutsches Konsulat Lissabon</div>
+      <div class="notfall-val">Bei Passverlust / medizinischem Notfall</div>
+      <div class="notfall-sub">Rua de Berlim 31–33 · google.com → "Deutsches Konsulat Lissabon"</div>
+    </div>
+  </div>
+
+  <div class="notfall-row">
+    <div class="notfall-icon">🚗</div>
+    <div class="notfall-info">
+      <div class="notfall-label">Transport</div>
+      <div class="notfall-val">Uber &amp; Bolt</div>
+      <div class="notfall-sub">Beide Apps in Lissabon zuverlässig verfügbar</div>
+    </div>
+  </div>
+
+  <div class="notfall-row">
+    <div class="notfall-icon">💳</div>
+    <div class="notfall-info">
+      <div class="notfall-label">Karte sperren lassen</div>
+      <div class="notfall-val">Hotline auf Kartenrückseite oder Banking-App</div>
+      <div class="notfall-sub">EHIC-Krankenversicherungskarte — Europa-weite Notfallversorgung</div>
+    </div>
+  </div>
+</div>
+
+<!-- PHRASEN -->
+<div class="panel" id="p12">
+  <div class="dh"><h2>Portugiesisch</h2><div class="dh-sub">Die wichtigsten Phrasen vor Ort</div></div>
+
+  <div class="phrase-cat">
+    <div class="phrase-cat-title">Begrüßung &amp; Allgemein</div>
+
+    <div class="phrase-row">
+      <div class="phrase-pt">Bom dia</div>
+      <div class="phrase-right"><div class="phrase-de">Guten Morgen</div><div class="phrase-pron">Bom dia</div></div>
+    </div>
+    <div class="phrase-row">
+      <div class="phrase-pt">Boa tarde</div>
+      <div class="phrase-right"><div class="phrase-de">Guten Tag / Nachmittag</div><div class="phrase-pron">Boa tarde</div></div>
+    </div>
+    <div class="phrase-row">
+      <div class="phrase-pt">Boa noite</div>
+      <div class="phrase-right"><div class="phrase-de">Guten Abend / Gute Nacht</div><div class="phrase-pron">Boa noite</div></div>
+    </div>
+    <div class="phrase-row">
+      <div class="phrase-pt">Olá / Adeus</div>
+      <div class="phrase-right"><div class="phrase-de">Hallo / Auf Wiedersehen</div><div class="phrase-pron">Olla / Adeusch</div></div>
+    </div>
+    <div class="phrase-row">
+      <div class="phrase-pt">Obrigado / Obrigada</div>
+      <div class="phrase-right"><div class="phrase-de">Danke (Mann / Frau)</div><div class="phrase-pron">Obri-gadu / Obri-gada</div></div>
+    </div>
+    <div class="phrase-row">
+      <div class="phrase-pt">De nada</div>
+      <div class="phrase-right"><div class="phrase-de">Bitte / Gern geschehen</div><div class="phrase-pron">De nada</div></div>
+    </div>
+    <div class="phrase-row">
+      <div class="phrase-pt">Por favor</div>
+      <div class="phrase-right"><div class="phrase-de">Bitte (bitten um etwas)</div><div class="phrase-pron">Por fa-vor</div></div>
+    </div>
+    <div class="phrase-row">
+      <div class="phrase-pt">Desculpe</div>
+      <div class="phrase-right"><div class="phrase-de">Entschuldigung</div><div class="phrase-pron">Deschkulpe</div></div>
+    </div>
+    <div class="phrase-row">
+      <div class="phrase-pt">Sim / Não</div>
+      <div class="phrase-right"><div class="phrase-de">Ja / Nein</div><div class="phrase-pron">Sing / Nãu</div></div>
+    </div>
+    <div class="phrase-row">
+      <div class="phrase-pt">Fala inglês?</div>
+      <div class="phrase-right"><div class="phrase-de">Sprechen Sie Englisch?</div><div class="phrase-pron">Fala inglesh?</div></div>
+    </div>
+  </div>
+
+  <div class="phrase-cat">
+    <div class="phrase-cat-title">Im Restaurant &amp; Café</div>
+
+    <div class="phrase-row">
+      <div class="phrase-pt">A conta, por favor</div>
+      <div class="phrase-right"><div class="phrase-de">Die Rechnung, bitte</div><div class="phrase-pron">A konta, por fa-vor</div></div>
+    </div>
+    <div class="phrase-row">
+      <div class="phrase-pt">Água, por favor</div>
+      <div class="phrase-right"><div class="phrase-de">Wasser, bitte</div><div class="phrase-pron">Agua, por fa-vor</div></div>
+    </div>
+    <div class="phrase-row">
+      <div class="phrase-pt">Uma mesa para quatro</div>
+      <div class="phrase-right"><div class="phrase-de">Ein Tisch für vier</div><div class="phrase-pron">Uma mesa para kwatro</div></div>
+    </div>
+    <div class="phrase-row">
+      <div class="phrase-pt">Dois adultos, duas crianças</div>
+      <div class="phrase-right"><div class="phrase-de">2 Erwachsene, 2 Kinder</div><div class="phrase-pron">Doisch adultusch, duash krianssash</div></div>
+    </div>
+    <div class="phrase-row">
+      <div class="phrase-pt">Quero este</div>
+      <div class="phrase-right"><div class="phrase-de">Ich möchte dieses (zeigen)</div><div class="phrase-pron">Kero esht</div></div>
+    </div>
+    <div class="phrase-row">
+      <div class="phrase-pt">Está delicioso!</div>
+      <div class="phrase-right"><div class="phrase-de">Das ist lecker!</div><div class="phrase-pron">Eshta delisiosu</div></div>
+    </div>
+  </div>
+
+  <div class="phrase-cat">
+    <div class="phrase-cat-title">Unterwegs</div>
+
+    <div class="phrase-row">
+      <div class="phrase-pt">Onde é a casa de banho?</div>
+      <div class="phrase-right"><div class="phrase-de">Wo ist die Toilette?</div><div class="phrase-pron">Onde é a kasa de banu?</div></div>
+    </div>
+    <div class="phrase-row">
+      <div class="phrase-pt">Onde é o metro?</div>
+      <div class="phrase-right"><div class="phrase-de">Wo ist die Metro?</div><div class="phrase-pron">Onde é u metro?</div></div>
+    </div>
+    <div class="phrase-row">
+      <div class="phrase-pt">Quanto custa?</div>
+      <div class="phrase-right"><div class="phrase-de">Was kostet das?</div><div class="phrase-pron">Kwanto kushta?</div></div>
+    </div>
+    <div class="phrase-row">
+      <div class="phrase-pt">Ajuda!</div>
+      <div class="phrase-right"><div class="phrase-de">Hilfe!</div><div class="phrase-pron">Ajuda!</div></div>
+    </div>
+  </div>
+</div>
 </div><!-- /content -->
 
 <div class="doc-viewer" id="doc-viewer">
@@ -441,40 +784,40 @@ const PLACEHOLDERS = {
 };
 
 const A = {
-  tram28:{name:'Tram 28E',desc:'Ticket an Bord: ca. 3 € p.P. (~12 € für alle)<br>Viva Viagem Karte: ~1,60 € p.P. (~6,40 €)<br>(Stand 2025)',maps:'https://maps.google.com/?q=Largo+Martim+Moniz+Lissabon'},
-  castelo:{name:'Castelo de São Jorge',desc:'Eintritt: ca. 15 € pro Erwachsenem<br>Kinder unter 10 kostenlos · 10–17 J. ca. 7,50 €<br>Für euch gesamt: ~45 € (Stand 2025)',maps:'https://maps.google.com/?q=Castelo+de+São+Jorge+Lisboa'},
+  tram28:{name:'Tram 28E',desc:'Ticket an Bord: ca. 3 € p.P. (~12 € für alle)<br>Viva Viagem Karte: ~1,60 € p.P. (~6,40 €)<br>(Stand 2025)',hours:'Täglich 06:00–22:00',maps:'https://maps.google.com/?q=Largo+Martim+Moniz+Lissabon'},
+  castelo:{name:'Castelo de São Jorge',desc:'Eintritt: ca. 15 € pro Erwachsenem<br>Kinder unter 10 kostenlos · 10–17 J. ca. 7,50 €<br>Für euch gesamt: ~45 € (Stand 2025)',hours:'Täglich 09:00–18:00 (Nov–Feb) · Letzter Einlass 17:30',maps:'https://maps.google.com/?q=Castelo+de+São+Jorge+Lisboa'},
   alfama:{name:'Alfama',desc:'Souvenirs wie Magneten und Flaggen',maps:'https://maps.google.com/?q=Alfama+Lisboa'},
   'miradouro-graca':{name:'Miradouro da Graça',desc:'',maps:'https://maps.google.com/?q=Miradouro+da+Graça+Lisboa'},
   'miradouro-portas-sol':{name:'Miradouro das Portas do Sol',desc:'',maps:'https://maps.google.com/?q=Miradouro+das+Portas+do+Sol+Lisboa'},
-  se:{name:'Sé de Lisboa',desc:'Eintritt Kirche: kostenlos<br>Kreuzgang: ca. 2,50 € p.P. (Stand 2025)',maps:'https://maps.google.com/?q=Sé+de+Lisboa'},
-  bica:{name:'Elevador da Bica',desc:'Ticket: ~3 € p.P. an Bord<br>Mit Viva Viagem Karte: ~1,60 € p.P.<br>(Stand 2025)',maps:'https://maps.google.com/?q=Elevador+da+Bica+Lisboa'},
-  'santa-justa':{name:'Elevador de Santa Justa',desc:'Eintritt: ca. 5,30 € p.P. (4 Pers. = ~21 €)<br>Mit Viva Viagem Karte: ~1,60 € p.P.<br>(Stand 2025)',maps:'https://maps.google.com/?q=Elevador+de+Santa+Justa+Lisboa'},
-  jeronimos:{name:'Mosteiro dos Jerónimos',desc:'Eintritt: ca. 10 € p.P. · Kinder unter 12 kostenlos<br>Für euch gesamt: ~25 € (Stand 2025)',maps:'https://maps.google.com/?q=Mosteiro+dos+Jeronimos+Lisboa'},
-  torre:{name:'Torre de Belém',desc:'Eintritt: ca. 6 € p.P. · Kinder unter 12 kostenlos<br>Für euch gesamt: ~15 € (Stand 2025)',maps:'https://maps.google.com/?q=Torre+de+Belém+Lisboa'},
-  pasteis:{name:'Pastéis de Belém',desc:'Originalrezept seit 1837 · Warm mit Zimt & Puderzucker',maps:'https://maps.google.com/?q=Pastéis+de+Belém+Rua+de+Belém'},
+  se:{name:'Sé de Lisboa',desc:'Eintritt Kirche: kostenlos<br>Kreuzgang: ca. 2,50 € p.P. (Stand 2025)',hours:'Mo–Sa 09:00–19:00 · So 10:00–17:00',maps:'https://maps.google.com/?q=Sé+de+Lisboa'},
+  bica:{name:'Elevador da Bica',desc:'Ticket: ~3 € p.P. an Bord<br>Mit Viva Viagem Karte: ~1,60 € p.P.<br>(Stand 2025)',hours:'Mo–Fr 07:00–21:00 · Sa 09:00–21:00 · So 11:00–21:00',maps:'https://maps.google.com/?q=Elevador+da+Bica+Lisboa'},
+  'santa-justa':{name:'Elevador de Santa Justa',desc:'Eintritt: ca. 5,30 € p.P. (4 Pers. = ~21 €)<br>Mit Viva Viagem Karte: ~1,60 € p.P.<br>(Stand 2025)',hours:'Täglich 07:30–22:00',maps:'https://maps.google.com/?q=Elevador+de+Santa+Justa+Lisboa'},
+  jeronimos:{name:'Mosteiro dos Jerónimos',desc:'Eintritt: ca. 10 € p.P. · Kinder unter 12 kostenlos<br>Für euch gesamt: ~25 € (Stand 2025)',hours:'Di–So 09:30–17:30 · <span style="color:#e74c3c;font-weight:600">Mo geschlossen!</span>',maps:'https://maps.google.com/?q=Mosteiro+dos+Jeronimos+Lisboa'},
+  torre:{name:'Torre de Belém',desc:'Eintritt: ca. 6 € p.P. · Kinder unter 12 kostenlos<br>Für euch gesamt: ~15 € (Stand 2025)',hours:'Di–So 10:00–17:30 · Letzter Einlass 17:00 · <span style="color:#e74c3c;font-weight:600">Mo geschlossen!</span>',maps:'https://maps.google.com/?q=Torre+de+Belém+Lisboa'},
+  pasteis:{name:'Pastéis de Belém',desc:'Originalrezept seit 1837 · Warm mit Zimt & Puderzucker',hours:'Täglich 08:00–23:00',maps:'https://maps.google.com/?q=Pastéis+de+Belém+Rua+de+Belém'},
   padrao:{name:'Padrão dos Descobrimentos',desc:'',maps:'https://maps.google.com/?q=Padrão+dos+Descobrimentos+Lisboa'},
   ponte:{name:'Ponte 25 de Abril',desc:'',maps:'https://maps.google.com/?q=Ponte+25+de+Abril+Lisboa'},
   sintra:{name:'Sintra',desc:'Zug (Rossio → Sintra): ca. 2,50 € p.P. einfach<br>Für euch ~20 € hin &amp; zurück (Stand 2025)',maps:'https://maps.google.com/?q=Sintra+Portugal'},
-  pena:{name:'Palácio da Pena',desc:'Eintritt (Park + Palast): ca. 14 € Erwachsene · 11,50 € Kinder<br>Für euch gesamt: ~51 € (Stand 2025)',maps:'https://maps.google.com/?q=Palácio+da+Pena+Sintra'},
+  pena:{name:'Palácio da Pena',desc:'Eintritt (Park + Palast): ca. 14 € Erwachsene · 11,50 € Kinder<br>Für euch gesamt: ~51 € (Stand 2025)',hours:'Täglich 09:30–18:00 (Park) · Palast bis 17:00',maps:'https://maps.google.com/?q=Palácio+da+Pena+Sintra'},
   'parque-eduardo':{name:'Parque Eduardo VII',desc:'',maps:'https://maps.google.com/?q=Parque+Eduardo+VII+Lisboa'},
   sintra:{name:'Sintra',desc:'',maps:'https://maps.google.com/?q=Sintra+Portugal'},
-  regaleira:{name:'Quinta da Regaleira',desc:'Eintritt: ca. 10 € Erwachsene · 5,50 € Kinder<br>Für euch gesamt: ~31 € (Stand 2025)',maps:'https://maps.google.com/?q=Quinta+da+Regaleira+Sintra'},
-  cervejaria:{name:'Cervejaria Trindade',desc:'',maps:'https://maps.google.com/?q=Cervejaria+Trindade+Lisboa'},
-  timeout:{name:'Time Out Market',desc:'',maps:'https://maps.google.com/?q=Time+Out+Market+Lisboa'},
+  regaleira:{name:'Quinta da Regaleira',desc:'Eintritt: ca. 10 € Erwachsene · 5,50 € Kinder<br>Für euch gesamt: ~31 € (Stand 2025)',hours:'Täglich 09:30–18:00 (November)',maps:'https://maps.google.com/?q=Quinta+da+Regaleira+Sintra'},
+  cervejaria:{name:'Cervejaria Trindade',desc:'',hours:'Täglich 12:00–23:30',maps:'https://maps.google.com/?q=Cervejaria+Trindade+Lisboa'},
+  timeout:{name:'Time Out Market',desc:'',hours:'So–Mi 10:00–00:00 · Do–Sa 10:00–02:00',maps:'https://maps.google.com/?q=Time+Out+Market+Lisboa'},
   'pink-street':{name:'Pink Street — Rua Nova do Carvalho',desc:'',maps:'https://maps.google.com/?q=Rua+Nova+do+Carvalho+Lisboa'},
   'ribeira-naus':{name:'Ribeira das Naus',desc:'',maps:'https://maps.google.com/?q=Ribeira+das+Naus+Lisboa'},
   rossio:{name:'Rossio — Praça Dom Pedro IV',desc:'Wellenpflaster · A Ginjinha direkt um die Ecke',maps:'https://maps.google.com/?q=Rossio+Praça+Dom+Pedro+IV+Lisboa'},
   'praca-comercio':{name:'Praça do Comércio',desc:'',maps:'https://maps.google.com/?q=Praça+do+Comércio+Lisboa'},
-  arco:{name:'Arco da Rua Augusta',desc:'Aufstieg: ca. 3 € p.P. · Aussichtsplattform über der Baixa',maps:'https://maps.google.com/?q=Arco+da+Rua+Augusta+Lisboa'},
+  arco:{name:'Arco da Rua Augusta',desc:'Aufstieg: ca. 3 € p.P. · Aussichtsplattform über der Baixa',hours:'Täglich 09:00–19:00',maps:'https://maps.google.com/?q=Arco+da+Rua+Augusta+Lisboa'},
   'rua-augusta':{name:'Rua Augusta & Triumphbogen',desc:'',maps:'https://maps.google.com/?q=Arco+da+Rua+Augusta+Lisboa'},
   'miradouro-catarina':{name:'Miradouro de Santa Catarina',desc:'',maps:'https://maps.google.com/?q=Miradouro+de+Santa+Catarina+Lisboa'},
-  panteon:{name:'Panteão Nacional',desc:'Eintritt: ca. 4 € pro Erwachsenem<br>Kinder unter 12 kostenlos<br>(Stand 2025)',maps:'https://maps.google.com/?q=Panteão+Nacional+Lisboa'},
+  panteon:{name:'Panteão Nacional',desc:'Eintritt: ca. 4 € pro Erwachsenem<br>Kinder unter 12 kostenlos<br>(Stand 2025)',hours:'Di–So 10:00–17:00 · <span style="color:#e74c3c;font-weight:600">Mo geschlossen!</span>',maps:'https://maps.google.com/?q=Panteão+Nacional+Lisboa'},
   chiado:{name:'Chiado',desc:'',maps:'https://maps.google.com/?q=Chiado+Lisboa'},
   pessoa:{name:'Fernando Pessoa Statue',desc:'',maps:'https://maps.google.com/?q=Estátua+Fernando+Pessoa+Lisboa'},
   'bairro-alto':{name:'Bairro Alto',desc:'',maps:'https://maps.google.com/?q=Bairro+Alto+Lisboa'},
   'sao-roque':{name:'Igreja São Roque',desc:'',maps:'https://maps.google.com/?q=Igreja+São+Roque+Lisboa'},
   encarnacao:{name:'Igreja de Nossa Senhora da Encarnação',desc:'',maps:'https://maps.google.com/?q=Igreja+Nossa+Senhora+Encarnação+Lisboa'},
-  carmo:{name:'Convento do Carmo',desc:'',maps:'https://maps.google.com/?q=Convento+do+Carmo+Lisboa'},
+  carmo:{name:'Convento do Carmo',desc:'',hours:'Mo–Sa 10:00–17:00 (November)',maps:'https://maps.google.com/?q=Convento+do+Carmo+Lisboa'},
   'sao-carlos':{name:'Teatro Nacional de São Carlos',desc:'',maps:'https://maps.google.com/?q=Teatro+Nacional+São+Carlos+Lisboa'},
   ginjinha:{name:'Ginjinha am Rossio',desc:'Sauerkirschlikör · ca. 1,40 € pro Shot · Seit 1840',maps:'https://maps.google.com/?q=A+Ginjinha+Largo+de+São+Domingos+Lisboa'},
   varandas:{name:'Varandas de Lisboa',desc:'Rua dos Bacalhoeiros 8, 1100-070 Lissabon',maps:'https://maps.google.com/?q=Rua+Afonso+de+Albuquerque+7,+R.+dos+Bacalhoeiros+8,+1100-070+Lisboa'},
@@ -493,7 +836,8 @@ function openModal(key){
   document.getElementById('m-maps').href=d.maps;
   const info=document.getElementById('m-info');
   info.innerHTML='';
-  if(d.transport){info.innerHTML=`<div class="m-info-cell full"><div class="m-info-lbl">🗺 Anfahrt</div><div class="m-info-val">${d.transport}</div></div>`;}
+  if(d.hours){info.innerHTML+=`<div class="m-info-cell full"><div class="m-info-lbl">🕐 Öffnungszeiten</div><div class="m-info-val">${d.hours}</div></div>`;}
+  if(d.transport){info.innerHTML+=`<div class="m-info-cell full"><div class="m-info-lbl">🗺 Anfahrt</div><div class="m-info-val">${d.transport}</div></div>`;}
   const imgEl=document.getElementById('m-img');
   document.getElementById('mo').classList.add('open');
   document.body.style.overflow='hidden';
@@ -755,6 +1099,47 @@ document.addEventListener('keydown',e=>{if(e.key==='Escape')closeDocViewer();});
 renderDocs();
 
 </script>
+// ── VORBUCHEN ────────────────────────────────────────────────────────────────
+const BOOK_LIST = [
+  {id:'b01', name:'Palácio da Pena', day:'Sa, 7. Nov · 09:30',
+   note:'Samstag — unbedingt vorab buchen! An Wochenenden schnell ausgebucht.',
+   link:'patrimoniocultural.gov.pt → Pena', urgent:true},
+  {id:'b02', name:'Quinta da Regaleira', day:'Sa, 7. Nov · 11:45',
+   note:'Empfohlen vorab zu buchen — Schlange kann sehr lang sein.',
+   link:'quintadaregaleira.pt → Online Tickets', urgent:false},
+  {id:'b03', name:'Mosteiro dos Jerónimos', day:'Fr, 6. Nov · 10:00',
+   note:'Empfohlen — Warteschlange morgens oft sehr lang.',
+   link:'patrimoniocultural.gov.pt → Jerónimos', urgent:false},
+  {id:'b04', name:'Torre de Belém', day:'Fr, 6. Nov · 13:00',
+   note:'Empfohlen — freitagnachmittags häufig voll.',
+   link:'patrimoniocultural.gov.pt → Torre de Belém', urgent:false},
+  {id:'b05', name:'Cervejaria Trindade — Tisch', day:'Sa, 7. Nov · 19:30',
+   note:'Samstagabend — unbedingt reservieren! Ältestes Restaurant Lissabons.',
+   link:'Tel: +351 21 342 35 06', urgent:true},
+];
+function getBookState(){try{return JSON.parse(localStorage.getItem('lisbon_book_v1')||'{}')}catch{return{}}}
+function saveBookState(s){localStorage.setItem('lisbon_book_v1',JSON.stringify(s))}
+function renderBook(){
+  const state=getBookState();
+  const container=document.getElementById('book-container');
+  if(!container)return;
+  let html='';
+  BOOK_LIST.forEach(item=>{
+    const done=!!state[item.id];
+    html+=`<div class="vorb-item ${done?'done':''}" onclick="toggleBook('${item.id}')">
+      <div class="vorb-checkbox"></div>
+      <div style="flex:1">
+        <div class="vorb-name">${item.name}${item.urgent&&!done?' <span style="color:#e74c3c;font-size:11px;font-weight:600">● dringend</span>':''}</div>
+        <div class="vorb-note">${item.day}<br>${item.note}</div>
+        <div class="vorb-link">${item.link}</div>
+      </div>
+    </div>`;
+  });
+  container.innerHTML=html;
+}
+function toggleBook(id){const s=getBookState();s[id]=!s[id];saveBookState(s);renderBook();}
+renderBook();
+
 <script>
 if('serviceWorker' in navigator){
   navigator.serviceWorker.register('/sw.js').catch(()=>{});
