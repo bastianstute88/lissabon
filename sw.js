@@ -1,4 +1,4 @@
-const CACHE = 'lissabon-2026-v2';
+const CACHE = 'lissabon-2026-v3';
 
 self.addEventListener('install', () => self.skipWaiting());
 
