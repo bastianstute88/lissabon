@@ -828,6 +828,14 @@ function showDay(i){
   window.scrollTo(0,0);
 }
 
+// Beim Öffnen/Zurückkehren (auch PWA vom Homescreen) immer auf "Übersicht" starten
+if('scrollRestoration' in history){ history.scrollRestoration='manual'; }
+window.addEventListener('pageshow', function(){
+  showDay(0);
+  var nav=document.querySelector('.nav'); if(nav){ nav.scrollLeft=0; }
+  window.scrollTo(0,0);
+});
+
 function openModal(key){
   const d=A[key]; if(!d) return;
   document.getElementById('m-ttl').textContent=d.name;
