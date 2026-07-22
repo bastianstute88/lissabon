@@ -360,6 +360,7 @@ body{background:var(--bg);color:var(--text);font-family:-apple-system,BlinkMacSy
     <div class="ti"><div class="t-time">12:00</div><div class="t-card"><div class="t-ttl">🚶 <span class="al" onclick="openModal('alfama')">Alfama</span></div><div class="t-note">Enge Gassen & Kachelfassaden</div></div></div>
     <div class="t-way"><span class="warr">↳</span><span>🚶 wenige Min zur Kathedrale</span></div>
     <div class="ti"><div class="t-time">13:00</div><div class="t-card"><div class="t-ttl">⛪ <span class="al" onclick="openModal('se')">Sé de Lisboa</span></div><div class="t-note">Romanische Kathedrale · 12. Jahrhundert · Kreuzgang besonders sehenswert</div></div></div>
+    <div class="ti"><div class="t-time">13:30</div><div class="t-card"><div class="t-ttl">🍴 Mittagessen — <span class="al" onclick="openModal('tasca-se')">Tasca da Sé</span></div><div class="t-note">Tasca direkt an der Kathedrale · gute Preis-Leistung</div></div></div>
     <div class="t-way"><span class="warr">↳</span><span>🚋 Tram 28E / 🚶 ~12 Min Richtung Chiado</span></div>
     <div class="ti"><div class="t-time">14:00</div><div class="t-card"><div class="t-ttl">🚶 <span class="al" onclick="openModal('chiado')">Chiado</span></div><div class="t-note">Schlendern · <span class="al" onclick="openModal('pessoa')">Fernando Pessoa Statue</span> · <span class="al" onclick="openModal('encarnacao')">Encarnação</span> · <span class="al" onclick="openModal('carmo')">Convento do Carmo</span> · <span class="al" onclick="openModal('sao-carlos')">Teatro São Carlos</span></div></div></div>
     <div class="t-way"><span class="warr">↳</span><span>🚶 wenige Min bergauf</span></div>
@@ -367,7 +368,7 @@ body{background:var(--bg);color:var(--text);font-family:-apple-system,BlinkMacSy
     <div class="t-way"><span class="warr">↳</span><span>🚶 ~8 Min zum Miradouro</span></div>
     <div class="ti hi"><div class="t-time">17:00</div><div class="t-card hi"><div class="t-ttl">🌅 <span class="al" onclick="openModal('miradouro-catarina')">Miradouro de Santa Catarina</span></div><div class="t-note">Tejo &amp; Ponte 25 de Abril · Sonnenuntergang ~17:30</div></div></div>
     <div class="t-way"><span class="warr">↳</span><span>🚶 wenige Min (Bairro Alto / Cais do Sodré)</span></div>
-    <div class="ti sp"><div class="t-time">18:30</div><div class="t-card sp"><div class="t-ttl">🍴 Abendessen</div><div class="t-note">🦪 Venusmuscheln in Weißwein-Sauce<br>🐙 Oktopus mit Olivenöl und Kartoffeln<br>🐟 Gesalzener Kabeljau mit Ei und Kartoffelsticks</div></div></div>
+    <div class="ti sp"><div class="t-time">19:00</div><div class="t-card sp"><div class="t-ttl">🎂 Geburtstagsessen — <span class="al" onclick="openModal('ltasca')">L-Tasca</span></div><div class="t-note">Cais do Sodré · authentisch &amp; günstig<br>🦪 Amêijoas · 🐙 Polvo · 🐟 Bacalhau</div></div></div>
   </div>
 </div>
 
@@ -578,6 +579,8 @@ const A = {
   'sao-carlos':{name:'Teatro Nacional de São Carlos',desc:'',maps:'https://maps.google.com/?q=Teatro+Nacional+São+Carlos+Lisboa'},
   ginjinha:{name:'Ginjinha am Rossio',desc:'Sauerkirschlikör · ca. 1,40 € pro Shot · Seit 1840',maps:'https://maps.google.com/?q=A+Ginjinha+Largo+de+São+Domingos+Lisboa'},
   varandas:{name:'Varandas de Lisboa',desc:'Rua dos Bacalhoeiros 8, 1100-070 Lissabon',maps:'https://maps.google.com/?q=Rua+Afonso+de+Albuquerque+7,+R.+dos+Bacalhoeiros+8,+1100-070+Lisboa'},
+  ltasca:{name:'L-Tasca (Maria Peixeira)',desc:'Authentische Tasca · Fisch &amp; Meeresfrüchte (Polvo, Amêijoas, Gambas) · günstig<br>Rua do Alecrim 5, Cais do Sodré<br><span style="color:var(--green-l)">Für den Geburtstag Tisch reservieren!</span><br><br>Alternative fürs große Meeresfrüchte-Fest: <strong>Cervejaria Ramiro</strong> (Av. Almirante Reis 1 · ~15 Min Taxi · Di–So 12:00–00:30, Mo zu · Reservierung mit Kaution)',hours:'Täglich 19:00–23:30',maps:'https://maps.google.com/?q=L-Tasca+Maria+Peixeira+Rua+do+Alecrim+5+Lisboa'},
+  'tasca-se':{name:'Tasca da Sé',desc:'Klassische Tasca direkt an der Kathedrale · traditionell, gute Preis-Leistung · Reservierung empfohlen<br>Rua Augusto Rosa 62',hours:'Mo–Sa 12:00–22:00 · <span style="color:#e74c3c;font-weight:600">So geschlossen</span>',maps:'https://maps.google.com/?q=Tasca+da+Sé+Rua+Augusto+Rosa+62+Lisboa'},
 };
 function showDay(i){
   document.querySelectorAll('.panel').forEach((p,j)=>p.classList.toggle('active',i===j));
