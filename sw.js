@@ -13,7 +13,7 @@ self.addEventListener('activate', e => {
 
 self.addEventListener('fetch', e => {
   const url = new URL(e.request.url);
-  const isHTML = url.pathname.endsWith('.html') || url.pathname === '/';
+  const isHTML = url.pathname.endsWith('.html') || url.pathname.endsWith('/');
 
   if (isHTML) {
     // Network-first für HTML: immer neueste Version, Cache als Fallback
