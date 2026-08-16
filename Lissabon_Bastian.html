@@ -347,7 +347,7 @@ body{background:var(--bg);color:var(--text);font-family:-apple-system,BlinkMacSy
     <div class="ti"><div class="t-time">17:30</div><div class="t-card inf"><div class="t-ttl">🛫 Abflug München (MUC)</div><div class="t-note">📄 Buchungsnr. im Dokumente-Tab</div></div></div>
     <div class="t-way"><span class="warr">↳</span><span>✈️ TAP Portugal TP555 · Direktflug · ~3,5 Std</span></div>
     <div class="ti"><div class="t-time">20:00</div><div class="t-card"><div class="t-ttl">🛬 Ankunft Lissabon (LIS)</div><div class="t-note">Flughafen Humberto Delgado</div></div></div>
-    <div class="t-way"><span class="warr">↳</span><span>🚕 Taxi / Uber · Flughafen → Baixa · ~20–25 Min · ~15–20 €</span></div>
+    <div class="t-way"><span class="warr">↳</span><span>🚕 Taxi / Uber · Flughafen → Baixa · ~20–25 Min · Taxi ~15 € · Uber/Bolt ~10 €</span></div>
     <div class="ti"><div class="t-time">~21:00</div><div class="t-card"><div class="t-ttl">🏨 <span class="al" onclick="openModal('varandas')">Varandas de Lisboa</span></div></div></div>
     <div class="t-way"><span class="warr">↳</span><span>🚶 wenige Min · Restaurant in Baixa / am Cais</span></div>
     <div class="ti"><div class="t-time">~21:30</div><div class="t-card"><div class="t-ttl">🍴 Abendessen</div></div></div>
@@ -434,7 +434,7 @@ body{background:var(--bg);color:var(--text);font-family:-apple-system,BlinkMacSy
     <div class="ti hi"><div class="t-time">07:30</div><div class="t-card hi"><div class="t-ttl">🚆 Zug nach <span class="al" onclick="openModal('sintra')">Sintra</span></div></div></div>
     <div style="margin:6px 0 12px 44px;background:rgba(4,106,56,.08);border:1px solid rgba(4,106,56,.3);border-radius:10px;padding:10px 12px;font-size:12px;line-height:1.8;color:var(--text)">
       <div style="font-weight:700;color:var(--green-l);margin-bottom:5px">🚌 Sintra Logistik</div>
-      <div>🚆 <b>Rossio → Sintra:</b> Linha de Sintra · alle 20 Min. · ca. 40 Min. · 2,50 € p.P.</div>
+      <div>🚆 <b>Rossio → Sintra:</b> Linha de Sintra · alle 20 Min. · ca. 40 Min. · 2,30 € p.P. einfach</div>
       <div>🚌 <b>Bahnhof → Pena:</b> Bus 434 Rundkurs · alle 15–20 Min. · ca. 15 Min.</div>
       <div>🎫 <b>Ticket:</b> Tagesticket <b>13,50 € p.P.</b> (~54 € für euch) · online 8 % günstiger · gilt 24 Std. für 434 und 435<br>Einzelfahrt 4,10 € gibt es zwar, wird bei Andrang aber nicht mehr verkauft — ihr braucht den Bus dreimal, also Tagesticket</div>
       <div>🏰 <b>Pena → Regaleira:</b> Bus 434 weiterfahren (Rundkurs) · ca. 10 Min.</div>
@@ -816,12 +816,12 @@ const A = {
   se:{name:'Sé de Lisboa',desc:'Eintritt: 4 € p.P. — inkl. Schatzkammer und Aufstieg zum Hochchor<br><span style="color:#e74c3c;font-weight:600">Kreuzgang derzeit für Besucher geschlossen</span><br>(Stand Aug 2026)',hours:'Okt–Mär: Mo–Sa 10:00–18:00',maps:'https://maps.google.com/?q=Sé+de+Lisboa'},
   bica:{name:'Elevador da Bica',desc:'Mit Viva Viagem (Zapping): 1,72 € p.P.<br>An Bord gelöst deutlich teurer<br>Fährt normal — anders als Glória und Santa Justa nicht von den Sperrungen betroffen (Stand Aug 2026)',hours:'Mo–Fr 07:00–21:00 · Sa 09:00–21:00 · So 11:00–21:00',maps:'https://maps.google.com/?q=Elevador+da+Bica+Lisboa'},
   'santa-justa':{name:'Elevador de Santa Justa',desc:'<strong>Der Turm steht frei — kein Gerüst, keine Verhüllung.</strong> Von unten fotografieren geht wie immer: 45 m Gusseisen, neugotisches Filigran<br>Der obere Steg zum Largo do Carmo ist von Chiado aus zu Fuß erreichbar und frei zugänglich — Blick über die Baixa ohne Ticket und ohne Schlange<br><span style="color:#e74c3c;font-weight:600">⚠️ Fahrbetrieb 2026 eingestellt (Sicherheitsprüfungen nach dem Glória-Unfall Sept. 2025)</span><br>Die Aussichtsplattform ganz oben ist schon seit Jahren saniert und zu<br>Quellen widersprüchlich — vor der Reise auf carris.pt prüfen<br>Preise falls wieder in Betrieb: 6 € · 1,80 € mit Viva Viagem<br>(Stand Aug 2026)',hours:'<span style="color:#e74c3c;font-weight:600">Derzeit geschlossen</span>',maps:'https://maps.google.com/?q=Elevador+de+Santa+Justa+Lisboa'},
-  jeronimos:{name:'Mosteiro dos Jerónimos',desc:'Eintritt: 18 € Erwachsene · Jugendliche ermäßigt · unter 12 frei<br>Deutlich teurer als früher — Familienpreis am Schalter erfragen<br>(Stand Aug 2026)',hours:'Di–So 09:30–17:30 · <span style="color:#e74c3c;font-weight:600">Mo geschlossen!</span>',maps:'https://maps.google.com/?q=Mosteiro+dos+Jeronimos+Lisboa'},
+  jeronimos:{name:'Mosteiro dos Jerónimos',desc:'Eintritt: 18 € ab 13 Jahren · unter 12 frei<br><strong>James zahlt mit 13 den vollen Preis</strong> → für euch ~54 € (2 Erw. + James, Nicolas frei)<br>Die Kirche Santa Maria de Belém ist kostenlos — nur der Kreuzgang kostet<br>Kombiticket mit Torre de Belém ist günstiger, falls ihr doch reingeht<br>(Stand Aug 2026)',hours:'Di–So 09:30–17:30 · <span style="color:#e74c3c;font-weight:600">Mo geschlossen!</span>',maps:'https://maps.google.com/?q=Mosteiro+dos+Jeronimos+Lisboa'},
   torre:{name:'Torre de Belém',desc:'Ihr fotografiert von außen — Eintritt 15 € p.P. lohnt dafür nicht<br>Seit Mai 2026 nach 13 Monaten Restaurierung wieder offen: Fassade frisch gereinigt, wieder heller<br>Falls doch rein: nur mit Zeitfenster-Ticket (60 Pers. je 30 Min), online oder am Schalter des Mosteiro dos Jerónimos<br>(Stand Aug 2026)',hours:'Di–So 10:00–17:30 · Letzter Einlass 17:00 · <span style="color:#e74c3c;font-weight:600">Mo geschlossen</span>',maps:'https://maps.google.com/?q=Torre+de+Belém+Lisboa'},
   pasteis:{name:'Pastéis de Belém',desc:'Originalrezept seit 1837 · Warm mit Zimt & Puderzucker',hours:'Täglich 08:00–23:00',maps:'https://maps.google.com/?q=Pastéis+de+Belém+Rua+de+Belém'},
   padrao:{name:'Padrão dos Descobrimentos',desc:'',maps:'https://maps.google.com/?q=Padrão+dos+Descobrimentos+Lisboa'},
   ponte:{name:'Ponte 25 de Abril',desc:'',maps:'https://maps.google.com/?q=Ponte+25+de+Abril+Lisboa'},
-  sintra:{name:'Sintra',desc:'Zug Rossio → Sintra: ca. 2,50 € p.P. einfach, mit Viva Viagem<br>Für euch ~20 € hin &amp; zurück<br>Bus 434 in Sintra separat (~4 € p.P.)<br>(Stand Aug 2026 — Fahrpreis vor Ort prüfen)',maps:'https://maps.google.com/?q=Sintra+Portugal'},
+  sintra:{name:'Sintra',desc:'Zug Rossio → Sintra: 2,30 € p.P. einfach, mit Viva Viagem<br>Für euch ~18 € hin und zurück<br>Bus-434-Tagesticket in Sintra separat: 13,50 € p.P. (~54 €)<br>(Stand Aug 2026)',maps:'https://maps.google.com/?q=Sintra+Portugal'},
   pena:{name:'Palácio da Pena',desc:'„Visita Essencial" (Park + Palast): 20 € Erwachsene · 6–17 J. ermäßigt · unter 6 frei<br>Nur Park: 12 €<br><span style="color:#e74c3c;font-weight:600">Zeitfenster-Reservierung ist Pflicht — vorher online buchen</span><br>(Stand Aug 2026)',hours:'November: Park 09:00–19:00 · Palast 09:30–18:30 · Letzter Einlass 18:00',maps:'https://maps.google.com/?q=Palácio+da+Pena+Sintra'},
   lxfactory:{name:'LX Factory',desc:'Eintritt frei — altes Fabrikgelände von 1846, direkt unter der Ponte 25 de Abril<br>Große Wandbilder, Werkstätten, Streetfood, Rooftop-Bars<br>Buchladen Ler Devagar: alte Druckereihalle mit dem fliegenden Fahrrad unter der Decke<br>Läden ca. 10–20 Uhr, Restaurants länger',hours:'Gelände täglich · Läden ca. 10:00–20:00',maps:'https://maps.google.com/?q=LX+Factory+Lisboa'},
   regaleira:{name:'Quinta da Regaleira',desc:'Neue Preise seit Januar 2026: 20 € Erwachsene · 15 € (6–17 J.) · unter 6 frei<br>Für euch: ~70 €<br>(Stand Aug 2026 — Quellen uneinheitlich, vor der Buchung auf regaleira.pt prüfen)',hours:'Täglich 09:30–18:00 (November)',maps:'https://maps.google.com/?q=Quinta+da+Regaleira+Sintra'},
@@ -831,7 +831,7 @@ const A = {
   'ribeira-naus':{name:'Ribeira das Naus',desc:'',maps:'https://maps.google.com/?q=Ribeira+das+Naus+Lisboa'},
   rossio:{name:'Rossio — Praça Dom Pedro IV',desc:'Wellenpflaster · A Ginjinha direkt um die Ecke',maps:'https://maps.google.com/?q=Rossio+Praça+Dom+Pedro+IV+Lisboa'},
   'praca-comercio':{name:'Praça do Comércio',desc:'',maps:'https://maps.google.com/?q=Praça+do+Comércio+Lisboa'},
-  arco:{name:'Arco da Rua Augusta',desc:'Aufstieg: ca. 3 € p.P. · Aussichtsplattform über der Baixa',hours:'Täglich 09:00–19:00',maps:'https://maps.google.com/?q=Arco+da+Rua+Augusta+Lisboa'},
+  arco:{name:'Arco da Rua Augusta',desc:'Aufstieg: 3,50 € p.P. · unter 5 J. frei · 360°-Blick über Praça do Comércio, Tejo und Baixa<br>(Stand Aug 2026)',hours:'Täglich 10:00–19:00 · Letzter Einlass 18:30',maps:'https://maps.google.com/?q=Arco+da+Rua+Augusta+Lisboa'},
   'rua-augusta':{name:'Rua Augusta & Triumphbogen',desc:'',maps:'https://maps.google.com/?q=Arco+da+Rua+Augusta+Lisboa'},
   'miradouro-catarina':{name:'Miradouro de Santa Catarina',desc:'',maps:'https://maps.google.com/?q=Miradouro+de+Santa+Catarina+Lisboa'},
   panteon:{name:'Panteão Nacional',desc:'Eintritt: 8 € Erwachsene · Kinder unter 12 frei<br>Für euch: ~16 €<br>(Stand Aug 2026)',hours:'Di–So 10:00–17:00 · <span style="color:#e74c3c;font-weight:600">Mo geschlossen!</span>',maps:'https://maps.google.com/?q=Panteão+Nacional+Lisboa'},
@@ -842,7 +842,7 @@ const A = {
   encarnacao:{name:'Igreja de Nossa Senhora da Encarnação',desc:'',maps:'https://maps.google.com/?q=Igreja+Nossa+Senhora+Encarnação+Lisboa'},
   carmo:{name:'Convento do Carmo',desc:'',hours:'Mo–Sa 10:00–17:00 (November)',maps:'https://maps.google.com/?q=Convento+do+Carmo+Lisboa'},
   'sao-carlos':{name:'Teatro Nacional de São Carlos',desc:'',maps:'https://maps.google.com/?q=Teatro+Nacional+São+Carlos+Lisboa'},
-  ginjinha:{name:'Ginjinha am Rossio',desc:'Sauerkirschlikör · ca. 1,40 € pro Shot · Seit 1840',maps:'https://maps.google.com/?q=A+Ginjinha+Largo+de+São+Domingos+Lisboa'},
+  ginjinha:{name:'Ginjinha am Rossio',desc:'Sauerkirschlikör · 1,55 € pro Shot bei A Ginjinha · Schokobecher etwas teurer<br>Flasche zum Mitnehmen ~10 € (1 l) · Seit 1840<br>(Stand Aug 2026)',maps:'https://maps.google.com/?q=A+Ginjinha+Largo+de+São+Domingos+Lisboa'},
   varandas:{name:'Varandas de Lisboa',desc:'Rua dos Bacalhoeiros 8, 1100-070 Lissabon',maps:'https://maps.google.com/?q=Rua+Afonso+de+Albuquerque+7,+R.+dos+Bacalhoeiros+8,+1100-070+Lisboa'},
   ltasca:{name:'L-Tasca (Maria Peixeira)',desc:'Authentische Tasca · Fisch &amp; Meeresfrüchte (Polvo, Amêijoas, Gambas) · günstig<br>Rua do Alecrim 5, Cais do Sodré<br><span style="color:var(--green-l)">Für den Geburtstag Tisch reservieren!</span><br><br>Alternative fürs große Meeresfrüchte-Fest: <strong>Cervejaria Ramiro</strong> (Av. Almirante Reis 1 · ~15 Min Taxi · Di–So 12:00–00:30, Mo zu · Reservierung mit Kaution)',hours:'Täglich 19:00–23:30',maps:'https://maps.google.com/?q=L-Tasca+Maria+Peixeira+Rua+do+Alecrim+5+Lisboa'},
   'tasca-se':{name:'Tasca da Sé',desc:'Klassische Tasca direkt an der Kathedrale · traditionell, gute Preis-Leistung · Reservierung empfohlen<br>Rua Augusto Rosa 62',hours:'Mo–Sa 12:00–22:00 · <span style="color:#e74c3c;font-weight:600">So geschlossen</span>',maps:'https://maps.google.com/?q=Tasca+da+Sé+Rua+Augusto+Rosa+62+Lisboa'},
@@ -1136,10 +1136,10 @@ renderDocs();
 // ── VORBUCHEN ────────────────────────────────────────────────────────────────
 const BOOK_LIST = [
   {id:'b06', name:'Castelo de São Jorge', day:'Do, 5. Nov · 09:30',
-   note:'Zeitfenster-Ticket online sichern · für euch ~45 € (Kinder 11 & 13 je ~7,50 €)',
+   note:'Zeitfenster-Ticket online sichern · 17 € Erw. · 8,50 € (13–25 J.) · unter 13 frei → für euch 42,50 € (Nicolas ist mit 11 frei)',
    link:'→ Tickets', url:'https://castelodesaojorge.pt/en/plan-your-visit/choose-your-ticket/', urgent:false},
   {id:'b03', name:'Mosteiro dos Jerónimos', day:'Fr, 6. Nov · 10:00',
-   note:'',
+   note:'18 € ab 13 J. · unter 12 frei → für euch ~54 €. Deutlich teurer als früher',
    link:'→ Tickets', url:'https://jeronimosmonasteryticket.com/en', urgent:false},
   {id:'b01', name:'Pena Palace + Quinta da Regaleira', day:'Sa, 7. Nov',
    note:'',
