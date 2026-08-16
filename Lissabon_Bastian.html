@@ -369,8 +369,10 @@ body{background:var(--bg);color:var(--text);font-family:-apple-system,BlinkMacSy
     <div class="ti hi"><div class="t-time">09:30</div><div class="t-card hi"><div class="t-ttl">🏰 <span class="al" onclick="openModal('castelo')">Castelo de São Jorge</span></div><div class="t-note">Öffnet 9:00 · Festungsmauern · Blick über Lissabon</div></div></div>
     <div class="t-way"><span class="warr">↳</span><span>🚶 ~15 Min hinunter Richtung Alfama</span></div>
     <div class="ti"><div class="t-time">10:30</div><div class="t-card"><div class="t-ttl">👁 <span class="al" onclick="openModal('miradouro-portas-sol')">Miradouro das Portas do Sol</span></div><div class="t-note">Blick auf Panteão & Alfama-Dächer</div></div></div>
+    <div class="t-way"><span class="warr">↳</span><span>🚶 1 Min · direkt nebenan</span></div>
+    <div class="ti"><div class="t-time">10:45</div><div class="t-card"><div class="t-ttl">🌸 <span class="al" onclick="openModal('santa-luzia')">Miradouro de Santa Luzia</span></div><div class="t-note">Bougainvillea, Azulejo-Wandbilder, Blick über Alfama</div></div></div>
     <div class="t-way"><span class="warr">↳</span><span>🚶 3 Min hinab</span></div>
-    <div class="ti hi"><div class="t-time">10:50</div><div class="t-card hi"><div class="t-ttl">🏛 <span class="al" onclick="openModal('panteon')">Panteão Nacional</span></div><div class="t-note">Öffnet 10:00 · Vasco da Gama Grabstätte</div></div></div>
+    <div class="ti hi"><div class="t-time">11:00</div><div class="t-card hi"><div class="t-ttl">🏛 <span class="al" onclick="openModal('panteon')">Panteão Nacional</span></div><div class="t-note">Öffnet 10:00 · Vasco da Gama Grabstätte</div></div></div>
     <div class="t-way"><span class="warr">↳</span><span>🚶 bergab in die Alfama-Gassen</span></div>
     <div class="ti"><div class="t-time">12:00</div><div class="t-card"><div class="t-ttl">🚶 <span class="al" onclick="openModal('alfama')">Alfama</span></div><div class="t-note">Enge Gassen & Kachelfassaden</div></div></div>
     <div class="t-way"><span class="warr">↳</span><span>🚶 wenige Min zur Kathedrale</span></div>
@@ -794,6 +796,7 @@ const PLACEHOLDERS = {
 };
 
 const A = {
+  'santa-luzia':{name:'Miradouro de Santa Luzia',desc:'Eintritt frei<br>Terrasse mit Bougainvillea-Pergola und großen Azulejo-Wandbildern<br>Blick über die Alfama-Dächer auf den Tejo<br>Liegt 50 m unterhalb der Portas do Sol — einfach die Straße weiter',maps:'https://maps.google.com/?q=Miradouro+de+Santa+Luzia+Lisboa'},
   prazeres:{name:'Cemitério dos Prazeres',desc:'Eintritt frei — auch die Kinder<br>Gräberstadt von 1833: ganze Straßenzüge aus Häuschen-Mausoleen, Zypressenalleen, Katzen<br>Mausoleu dos Duques de Palmela — größtes Privatmausoleum Europas<br>Ganz hinten: Aussichtsterrasse über den Tejo auf die Ponte 25 de Abril<br>Direkt am Eingang ist die Endstation der Tram 28E — Rückfahrt mit Sitzplatz',hours:'Täglich 09:00–17:00 (Okt–Apr) · Letzter Einlass 16:30',maps:'https://maps.google.com/?q=Cemitério+dos+Prazeres+Lisboa'},
   tram28:{name:'Tram 28E',desc:'Ticket an Bord: ca. 3 € p.P. (~12 € für alle)<br>Viva Viagem Karte: ~1,60 € p.P. (~6,40 €)<br>(Stand 2025)',hours:'Täglich 06:00–22:00',maps:'https://maps.google.com/?q=Largo+Martim+Moniz+Lissabon'},
   castelo:{name:'Castelo de São Jorge',desc:'Eintritt: ca. 15 € pro Erwachsenem<br>Kinder unter 10 kostenlos · 10–17 J. ca. 7,50 €<br>Für euch gesamt: ~45 € (Stand 2025)',hours:'Täglich 09:00–18:00 (Nov–Feb) · Letzter Einlass 17:30',maps:'https://maps.google.com/?q=Castelo+de+São+Jorge+Lisboa'},
