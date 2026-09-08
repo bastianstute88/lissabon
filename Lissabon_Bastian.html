@@ -411,7 +411,7 @@ body{background:var(--bg);color:var(--text);font-family:-apple-system,BlinkMacSy
     <div class="t-way"><span class="warr">↳</span><span>🚶 ~8 Min zum Miradouro</span></div>
     <div class="ti hi"><div class="t-time">17:00</div><div class="t-card hi"><div class="t-ttl">🌅 <span class="al" onclick="openModal('miradouro-catarina')">Miradouro de Santa Catarina</span></div><div class="t-note">Tejo &amp; Ponte 25 de Abril · Sonnenuntergang ~17:30</div></div></div>
     <div class="t-way"><span class="warr">↳</span><span>🚶 wenige Min (Bairro Alto / Cais do Sodré)</span></div>
-    <div class="ti sp"><div class="t-time">19:00</div><div class="t-card sp"><div class="t-ttl">🎂 Geburtstagsessen — <span class="al" onclick="openModal('ltasca')">L-Tasca</span></div><div class="t-note"><span style="color:#e74c3c;font-weight:600">⚠️ Tisch für 5 noch reservieren</span> · Lokal öffnet erst 19:00<br>Cais do Sodré · authentisch &amp; günstig<br>🦪 Amêijoas · 🐙 Polvo · 🐟 Bacalhau</div></div></div>
+    <div class="ti sp"><div class="t-time">19:00</div><div class="t-card sp"><div class="t-ttl">🎂 Geburtstagsessen — <span class="al" onclick="openModal('ltasca')">L-Tasca</span></div><div class="t-note"><span style="color:#e74c3c;font-weight:600">⏰ Ab 5. Okt reservieren (nur 1 Monat im Voraus)</span> · Lokal öffnet erst 19:00<br>Cais do Sodré · authentisch &amp; günstig<br>🦪 Amêijoas · 🐙 Polvo · 🐟 Bacalhau</div></div></div>
   </div>
 </div>
 
@@ -875,7 +875,7 @@ const A = {
   'sao-carlos':{name:'Teatro Nacional de São Carlos',desc:'',maps:'https://maps.google.com/?q=Teatro+Nacional+São+Carlos+Lisboa'},
   ginjinha:{name:'Ginjinha am Rossio',desc:'Sauerkirschlikör · 1,55 € pro Shot bei A Ginjinha · Schokobecher etwas teurer<br>Flasche zum Mitnehmen ~10 € (1 l) · Seit 1840<br>(Stand Aug 2026)',maps:'https://maps.google.com/?q=A+Ginjinha+Largo+de+São+Domingos+Lisboa'},
   varandas:{name:'Varandas de Lisboa',desc:'Rua dos Bacalhoeiros 8, 1100-070 Lissabon<br><br><strong style="color:var(--green-l)">Check-in:</strong> Das Hotel hat schriftlich bestätigt, dass <strong>Bastian als Buchungsinhaber selbst einchecken muss</strong> und die Ausweise aller Gäste geprüft werden. Also nicht vorfahren lassen — Pässe für alle vier griffbereit.<br><br><strong style="color:var(--green-l)">Kontakt:</strong> Nachrichten ans Hotel ausschließlich über die Booking.com-Buchung („Nachricht an die Unterkunft"), nicht per Mail — das Hotel verifiziert darüber, dass die Anfrage wirklich von euch kommt.',maps:'https://maps.google.com/?q=Rua+Afonso+de+Albuquerque+7,+R.+dos+Bacalhoeiros+8,+1100-070+Lisboa'},
-  ltasca:{name:'L-Tasca (Maria Peixeira)',desc:'Authentische Tasca · Fisch &amp; Meeresfrüchte (Polvo, Amêijoas, Gambas) · günstig<br>Rua do Alecrim 5, Cais do Sodré · <strong>öffnet erst 19:00</strong><br><span style="color:#e74c3c;font-weight:600">⚠️ Noch nicht reserviert — Tisch für 5 buchen: +351 21 346 2342 oder über TheFork</span><br><br>Alternative fürs große Meeresfrüchte-Fest: <strong>Cervejaria Ramiro</strong> (Av. Almirante Reis 1 · ~15 Min Taxi · Di–So 12:00–00:30, Mo zu · Reservierung mit Kaution)',hours:'Täglich 19:00–23:30',maps:'https://maps.google.com/?q=L-Tasca+Maria+Peixeira+Rua+do+Alecrim+5+Lisboa'},
+  ltasca:{name:'L-Tasca (Maria Peixeira)',desc:'Authentische Tasca · Fisch &amp; Meeresfrüchte (Polvo, Amêijoas, Gambas) · günstig<br>Rua do Alecrim 5, Cais do Sodré · <strong>öffnet erst 19:00</strong><br><span style="color:#e74c3c;font-weight:600">⏰ Reservierung erst ab 5. Okt möglich — sie nehmen nur einen Monat im Voraus. Dann Tisch für 5 buchen: +351 21 346 2342 oder TheFork</span><br><br>Alternative fürs große Meeresfrüchte-Fest: <strong>Cervejaria Ramiro</strong> (Av. Almirante Reis 1 · ~15 Min Taxi · Di–So 12:00–00:30, Mo zu · Reservierung mit Kaution)',hours:'Täglich 19:00–23:30',maps:'https://maps.google.com/?q=L-Tasca+Maria+Peixeira+Rua+do+Alecrim+5+Lisboa'},
   'tasca-se':{name:'Tasca da Sé',desc:'Klassische Tasca direkt an der Kathedrale · traditionell, gute Preis-Leistung · Reservierung empfohlen<br>Rua Augusto Rosa 62',hours:'Mo–Sa 12:00–22:00 · <span style="color:#e74c3c;font-weight:600">So geschlossen</span>',maps:'https://maps.google.com/?q=Tasca+da+Sé+Rua+Augusto+Rosa+62+Lisboa'},
 };
 function showDay(i){
@@ -1184,7 +1184,7 @@ renderDocs();
 // ── VORBUCHEN ────────────────────────────────────────────────────────────────
 const BOOK_LIST = [
   {id:'b07', name:'🎂 Geburtstagsessen — L-Tasca', day:'Do, 5. Nov · 19:00',
-   note:'Simones Geburtstag · Tisch für 5 Personen reservieren! Lokal öffnet erst 19:00, Rua do Alecrim 5 · Tel. +351 21 346 2342 oder über TheFork',
+   note:'⏰ Reservierung erst ab 5. Okt möglich (nehmen nur einen Monat im Voraus) — dann Tisch für 5 buchen! Simones Geburtstag · Lokal öffnet erst 19:00 · Rua do Alecrim 5 · Tel. +351 21 346 2342 oder TheFork',
    link:'→ Reservieren', url:'https://www.thefork.pt/restaurante/l-tasca-by-maria-peixeira-r800823', urgent:true},
   {id:'b06', name:'Castelo de São Jorge', day:'Do, 5. Nov · 09:30',
    note:'✅ Gekauft · kein Zeitfenster, 90 Tage ab Kauf gültig · 3×17 € + James 8,50 € = 59,50 € (Nicolas frei) · Ausweis für James mitnehmen',
