@@ -1193,8 +1193,13 @@ function triggerDocUpload(id){
 function compressAndStore(id,file){
   const reader=new FileReader();
   reader.onload=function(e){
-    if(file.type==='application/pdf'){
-      _dbPut(id,{data:e.target.result,pdf:true}).then(renderDocs).catch(err=>alert('Speichern fehlgeschlagen: '+err));
+    // 30.10.2026: iOS liefert manche Dateien ohne Typ (Hotel-PDF) -> PDF auch an Endung/Inhalt erkennen,
+    // alles, was kein Bild ist, als Dokument speichern statt still abzubrechen
+    const ist_pdf=/pdf/i.test(file.type)||/\.pdf$/i.test(file.name||'')||String(e.target.result).startsWith('data:application/pdf');
+    if(ist_pdf||!/^image\//i.test(file.type)&&!/\.(jpe?g|png|heic|heif|gif|webp)$/i.test(file.name||'')){
+      // ohne Typ heißt die Daten-URL „data:;base64,“ bzw. octet-stream -> als PDF kennzeichnen, sonst zeigt die Ansicht nichts
+      const d=ist_pdf?String(e.target.result).replace(/^data:[^;,]*;base64,/,'data:application/pdf;base64,'):e.target.result;
+      _dbPut(id,{data:d,pdf:true}).then(renderDocs).catch(err=>alert('Speichern fehlgeschlagen: '+err));
       return;
     }
     const img=new Image();
@@ -1208,8 +1213,12 @@ function compressAndStore(id,file){
       canvas.getContext('2d').drawImage(img,0,0,w,h);
       _dbPut(id,{data:canvas.toDataURL('image/jpeg',0.78)}).then(renderDocs).catch(err=>alert('Speichern fehlgeschlagen: '+err));
     };
+    img.onerror=function(){   // Bild nicht lesbar (z. B. HEIC) -> unverändert als Dokument ablegen
+      _dbPut(id,{data:e.target.result,pdf:true}).then(renderDocs).catch(err=>alert('Speichern fehlgeschlagen: '+err));
+    };
     img.src=e.target.result;
   };
+  reader.onerror=function(){ alert('Datei konnte nicht gelesen werden – bitte in die Dateien-App laden und dort auswählen.'); };
   reader.readAsDataURL(file);
 }
 
