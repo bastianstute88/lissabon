@@ -427,9 +427,9 @@ body{background:var(--bg);color:var(--text);font-family:-apple-system,BlinkMacSy
   <div class="dh"><h2>Freitag, 6. November</h2><div class="dh-sub">Elevadores · Belém · Stadt</div></div>
   <div class="tl">
     <div class="t-way"><span class="warr">↳</span><span>🚶 ~10 Min Richtung Cais do Sodré / Bica</span></div>
-    <div class="ti hi"><div class="t-time">07:30</div><div class="t-card hi"><div class="t-ttl">📸 <span class="al" onclick="openModal('bica')">Elevador da Bica</span></div><div class="t-note">Öffnet 7:30 Uhr</div></div></div>
+    <div class="ti hi"><div class="t-time">07:30</div><div class="t-card hi"><div class="t-ttl">📸 <span class="al" onclick="openModal('bica')">Elevador da Bica</span></div><div class="t-note">Fahrbetrieb eingestellt · Gasse + Schienen als Motiv</div></div></div>
     <div class="t-way"><span class="warr">↳</span><span>🚶 ~12 Min hoch nach Chiado</span></div>
-    <div class="ti hi"><div class="t-time">08:15</div><div class="t-card hi"><div class="t-ttl">🛗 <span class="al" onclick="openModal('santa-justa')">Elevador de Santa Justa</span></div><div class="t-note">Turm steht frei, von unten fotografierbar · oberer Steg über Largo do Carmo frei zugänglich<br><span style="color:#e74c3c;font-weight:600">⚠️ Fahrbetrieb 2026 eingestellt — Status vorher prüfen</span></div></div></div>
+    <div class="ti hi"><div class="t-time">08:15</div><div class="t-card hi"><div class="t-ttl">🛗 <span class="al" onclick="openModal('santa-justa')">Elevador de Santa Justa</span></div><div class="t-note">Turm steht frei, von unten fotografierbar · oberer Steg über Largo do Carmo frei zugänglich<br><span style="color:#e74c3c;font-weight:600">⚠️ Fahrbetrieb eingestellt (Stand Okt 2026)</span></div></div></div>
     <div class="t-way"><span class="warr">↳</span><span>🚶 wenige Min (Chiado)</span></div>
     <div class="ti sp"><div class="t-time">08:35</div><div class="t-card sp"><div class="t-ttl">☕ Frühstück in Chiado</div><div class="t-note">In Ruhe — ihr müsst erst gegen 09:40 in die Tram</div></div></div>
     <div class="t-way"><span class="warr">↳</span><span>🚋 Tram 15E ab Praça do Comércio (~09:40) → Belém · ~35 Min</span></div>
@@ -852,7 +852,7 @@ const A = {
   'miradouro-graca':{name:'Miradouro da Graça',desc:'',maps:'https://maps.google.com/?q=Miradouro+da+Graça+Lisboa'},
   'miradouro-portas-sol':{name:'Miradouro das Portas do Sol',desc:'',maps:'https://maps.google.com/?q=Miradouro+das+Portas+do+Sol+Lisboa'},
   se:{name:'Sé de Lisboa',desc:'Eintritt: 4 € p.P. — inkl. Schatzkammer und Aufstieg zum Hochchor<br>Für euch fünf: <strong>20 €</strong><br><span style="color:#e74c3c;font-weight:600">Kreuzgang derzeit für Besucher geschlossen</span><br>(Stand Aug 2026)',hours:'Okt–Mär: Mo–Sa 10:00–18:00',maps:'https://maps.google.com/?q=Sé+de+Lisboa'},
-  bica:{name:'Elevador da Bica',desc:'Mit Viva Viagem (Zapping): 1,72 € p.P.<br>An Bord gelöst deutlich teurer<br>Fährt normal — anders als Glória und Santa Justa nicht von den Sperrungen betroffen (Stand Aug 2026)',hours:'Mo–Fr 07:00–21:00 · Sa 09:00–21:00 · So 11:00–21:00',maps:'https://maps.google.com/?q=Elevador+da+Bica+Lisboa'},
+  bica:{name:'Elevador da Bica',desc:'<span style="color:#e74c3c;font-weight:600">Fahrbetrieb eingestellt</span> — seit dem Glória-Unglück (Sep 2025) geschlossen, keine Wiedereröffnung in Sicht (Stand Okt 2026)<br>Die steile Gasse mit den Schienen bleibt das Foto-Motiv',hours:'derzeit kein Fahrbetrieb',maps:'https://maps.google.com/?q=Elevador+da+Bica+Lisboa'},
   'santa-justa':{name:'Elevador de Santa Justa',desc:'<strong>Der Turm steht frei — kein Gerüst, keine Verhüllung.</strong> Von unten fotografieren geht wie immer: 45 m Gusseisen, neugotisches Filigran<br>Der obere Steg zum Largo do Carmo ist von Chiado aus zu Fuß erreichbar und frei zugänglich — Blick über die Baixa ohne Ticket und ohne Schlange<br><span style="color:#e74c3c;font-weight:600">⚠️ Fahrbetrieb 2026 eingestellt (Sicherheitsprüfungen nach dem Glória-Unfall Sept. 2025)</span><br>Die Aussichtsplattform ganz oben ist schon seit Jahren saniert und zu<br>Quellen widersprüchlich — vor der Reise auf carris.pt prüfen<br>Preise falls wieder in Betrieb: 6 € · 1,80 € mit Viva Viagem<br>(Stand Aug 2026)',hours:'<span style="color:#e74c3c;font-weight:600">Derzeit geschlossen</span>',maps:'https://maps.google.com/?q=Elevador+de+Santa+Justa+Lisboa'},
   jeronimos:{name:'Mosteiro dos Jerónimos',desc:'Eintritt offiziell: 18 € ab 13 Jahren · unter 12 frei → 4 zahlende Tickets (3 Erw. + James), Nicolas frei = <strong>72 €</strong> offiziell<br><strong>Bezahlt: 92 € über einen Wiederverkäufer</strong> (4 × 23 €) — 20 € Aufschlag<br>Die Kirche Santa Maria de Belém ist kostenlos — nur der Kreuzgang kostet<br>Kreuzgang Di–So ab 09:30, Kirche Di–Sa erst ab 10:30 (So 14:00)<br>Offizieller Verkauf: museusemonumentos.pt / MEO Blueticket — Wiederverkäufer schlagen auf<br>Kombiticket mit Torre de Belém ist günstiger, falls ihr doch reingeht<br>(Stand Aug 2026)',hours:'Di–So 09:30–17:30 · <span style="color:#e74c3c;font-weight:600">Mo geschlossen!</span>',maps:'https://maps.google.com/?q=Mosteiro+dos+Jeronimos+Lisboa'},
   torre:{name:'Torre de Belém',desc:'Ihr fotografiert von außen — Eintritt 15 € p.P. lohnt dafür nicht<br>Seit Mai 2026 nach 13 Monaten Restaurierung wieder offen: Fassade frisch gereinigt, wieder heller<br>Falls doch rein: nur mit Zeitfenster-Ticket (60 Pers. je 30 Min), online oder am Schalter des Mosteiro dos Jerónimos<br>(Stand Aug 2026)',hours:'Di–So 10:00–17:30 · Letzter Einlass 17:00 · <span style="color:#e74c3c;font-weight:600">Mo geschlossen</span>',maps:'https://maps.google.com/?q=Torre+de+Belém+Lisboa'},
@@ -1095,6 +1095,16 @@ renderPack();
 const DOC_SLOTS = [
   {id:'doc-flug',          label:'Flugbuchung',             icon:'✈️'},
   {id:'doc-hotel',         label:'Hotelbuchung',            icon:'🏨'},
+  {id:'doc-flug-2',        label:'Flugbuchung (5. Person)', icon:'✈️'},
+  {id:'doc-hotel-2',       label:'Hotel Zimmer 2',          icon:'🏨'},
+  {divider:true},
+  {id:'doc-tix-castelo',   label:'Tickets Castelo',         icon:'🎟️'},
+  {id:'doc-tix-jer-erw',   label:'Tickets Jerónimos Erwachsene', icon:'🎟️'},
+  {id:'doc-tix-jer-kind',  label:'Tickets Jerónimos Kinder', icon:'🎟️'},
+  {id:'doc-tix-pena',      label:'Tickets Pena + Bus 434',  icon:'🎟️'},
+  {id:'doc-tix-regaleira', label:'Tickets Regaleira',       icon:'🎟️'},
+  {id:'doc-res-trindade',  label:'Reservierung Trindade',   icon:'🍴'},
+  {id:'doc-res-ltasca',    label:'Reservierung L-Tasca',    icon:'🍴'},
   {divider:true},
   {id:'doc-pass-bastian',  label:'Reisepass Bastian',       icon:'🛂'},
   {id:'doc-pass-simone',   label:'Reisepass Simone',        icon:'🛂'},
