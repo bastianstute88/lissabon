@@ -286,15 +286,12 @@ body{background:var(--bg);color:var(--text);font-family:-apple-system,BlinkMacSy
     <span class="dn">📄</span><span class="dd">Dokumente</span><span class="db"></span>
   </button>
   <button class="tab" onclick="showDay(8)">
-    <span class="dn">✅</span><span class="dd">Vorbuchen</span><span class="db"></span>
-  </button>
-  <button class="tab" onclick="showDay(9)">
     <span class="dn">📷</span><span class="dd">Foto</span><span class="db"></span>
   </button>
-  <button class="tab" onclick="showDay(10)">
+  <button class="tab" onclick="showDay(9)">
     <span class="dn">🆘</span><span class="dd">Notfall</span><span class="db"></span>
   </button>
-  <button class="tab" onclick="showDay(11)">
+  <button class="tab" onclick="showDay(10)">
     <span class="dn">🇵🇹</span><span class="dd">Phrasen</span><span class="db"></span>
   </button>
 </nav>
@@ -535,11 +532,6 @@ body{background:var(--bg);color:var(--text);font-family:-apple-system,BlinkMacSy
 </div>
 
 
-<!-- VORBUCHEN -->
-<div class="panel" id="p9">
-  <div class="dh"><h2>Vorbuchen</h2><div class="dh-sub">Online-Tickets &amp; Reservierungen</div></div>
-  <div id="book-container"></div>
-</div>
 
 <!-- FOTO TIPPS -->
 <div class="panel" id="p10">
@@ -1299,7 +1291,7 @@ function renderBook(){
   container.innerHTML=html;
 }
 function toggleBook(id){const s=getBookState();s[id]=!s[id];saveBookState(s);renderBook();}
-renderBook();
+// renderBook(); – Vorbuchen-Reiter am 30.10.2026 entfernt (alles gebucht)
 </script>
 
 <script>
