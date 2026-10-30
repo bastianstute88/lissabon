@@ -180,6 +180,14 @@ body{background:var(--bg);color:var(--text);font-family:-apple-system,BlinkMacSy
 .doc-viewer img{max-width:100%;max-height:85vh;object-fit:contain;border-radius:8px}
 .doc-viewer-close{position:absolute;top:16px;right:16px;background:rgba(255,255,255,.15);border:none;color:#fff;font-size:20px;width:40px;height:40px;border-radius:50%;cursor:pointer}
 .doc-viewer-label{color:rgba(255,255,255,.6);font-size:12px;margin-top:12px}
+/* 30.10.2026: alle Seiten untereinander, volle Breite (Barcodes sofort lesbar) */
+.doc-viewer.pages{justify-content:flex-start;background:#000}
+#doc-viewer-pages{display:none;width:100vw;height:100vh;overflow-y:auto;-webkit-overflow-scrolling:touch;padding:64px 0 24px;box-sizing:border-box}
+.doc-viewer.pages #doc-viewer-pages{display:block}
+#doc-viewer-pages canvas,#doc-viewer-pages img{display:block;width:100%;height:auto;background:#fff;margin:0 0 10px;border-radius:0;max-height:none}
+#doc-viewer-pages .dv-hint{color:rgba(255,255,255,.6);font-size:13px;text-align:center;padding:20px}
+.doc-viewer.pages .doc-viewer-label{position:absolute;top:26px;left:16px;margin:0}
+.doc-viewer.pages .doc-viewer-close{z-index:2}
 
 .vorb-item{display:flex;align-items:flex-start;gap:10px;padding:12px 0;border-bottom:1px solid var(--border);cursor:pointer}
 .vorb-item:last-child{border-bottom:none}
@@ -769,6 +777,7 @@ body{background:var(--bg);color:var(--text);font-family:-apple-system,BlinkMacSy
 <div class="doc-viewer" id="doc-viewer">
   <button class="doc-viewer-close" onclick="closeDocViewer()">✕</button>
   <img id="doc-viewer-img" src="" alt="">
+  <div id="doc-viewer-pages"></div>
   <div class="doc-viewer-label" id="doc-viewer-label"></div>
 </div>
 
@@ -1227,41 +1236,70 @@ function deleteDoc(id){
   _dbDel(id).then(renderDocs);
 }
 
+// 30.10.2026: eigener PDF-Anzeiger (PDF.js, lokal im App-Ordner -> offline) statt iframe:
+// iOS zeigte im iframe nur Seite 1 und zoomte willkürlich
+let _pdfjs=null;
+function _ladePdfjs(){
+  if(_pdfjs)return _pdfjs;
+  _pdfjs=new Promise((res,rej)=>{
+    const s=document.createElement('script'); s.src='pdfjs/pdf.min.js';
+    s.onload=()=>{ window.pdfjsLib.GlobalWorkerOptions.workerSrc='pdfjs/pdf.worker.min.js'; res(window.pdfjsLib); };
+    s.onerror=()=>{ _pdfjs=null; rej('PDF-Anzeige konnte nicht geladen werden'); };
+    document.head.appendChild(s);
+  });
+  return _pdfjs;
+}
+function _datenZuBytes(d){
+  const b64=String(d).split(',')[1]||''; const bin=atob(b64); const u=new Uint8Array(bin.length);
+  for(let i=0;i<bin.length;i++)u[i]=bin.charCodeAt(i); return u;
+}
 async function viewDoc(id){
-  const store=await _dbGetAll();
+  let store={};
+  try{ store=await _dbGetAll(); }catch(e){}
   const entry=store[id]||DOC_EMBEDDED[id];
   if(!entry)return;
   const slot=DOC_SLOTS.find(s=>s.id===id);
   const viewer=document.getElementById('doc-viewer');
   const imgEl=document.getElementById('doc-viewer-img');
-  let iframe=document.getElementById('doc-viewer-pdf');
-  if(!iframe){
-    iframe=document.createElement('iframe');
-    iframe.id='doc-viewer-pdf';
-    iframe.style.cssText='width:95vw;height:80vh;border:none;border-radius:8px;display:none';
-    viewer.insertBefore(iframe,imgEl.nextSibling);
-  }
-  if(entry.pdf){
-    imgEl.style.display='none';
-    iframe.style.display='block';
-    iframe.src=entry.data;
-  } else {
-    imgEl.style.display='block';
-    iframe.style.display='none';
-    imgEl.src=entry.data;
-  }
+  const box=document.getElementById('doc-viewer-pages');
+  imgEl.style.display='none';
+  box.innerHTML=''; box.scrollTop=0;
+  viewer.classList.add('pages');
   document.getElementById('doc-viewer-label').textContent=slot?slot.label.replace(/\n/g,' · '):'';
   viewer.classList.add('open');
   document.body.style.overflow='hidden';
+  if(!entry.pdf){
+    const im=document.createElement('img'); im.src=entry.data; box.appendChild(im); return;
+  }
+  const hint=document.createElement('div'); hint.className='dv-hint'; hint.textContent='Lade Dokument …'; box.appendChild(hint);
+  try{
+    const lib=await _ladePdfjs();
+    const pdf=await lib.getDocument({data:_datenZuBytes(entry.data)}).promise;
+    hint.remove();
+    const dpr=Math.min(window.devicePixelRatio||1,3);
+    const breite=Math.min(window.innerWidth,900);
+    for(let n=1;n<=pdf.numPages;n++){
+      const page=await pdf.getPage(n);
+      const v1=page.getViewport({scale:1});
+      const vp=page.getViewport({scale:breite*dpr/v1.width});
+      const cv=document.createElement('canvas'); cv.width=Math.floor(vp.width); cv.height=Math.floor(vp.height);
+      box.appendChild(cv);
+      await page.render({canvasContext:cv.getContext('2d'),viewport:vp}).promise;
+    }
+  }catch(e){
+    hint.textContent='Anzeige nicht möglich ('+e+')';
+  }
 }
 
 function closeDocViewer(){
-  document.getElementById('doc-viewer').classList.remove('open');
+  document.getElementById('doc-viewer').classList.remove('open','pages');
+  document.getElementById('doc-viewer-pages').innerHTML='';
   document.body.style.overflow='';
 }
 
 document.addEventListener('keydown',e=>{if(e.key==='Escape')closeDocViewer();});
 renderDocs();
+setTimeout(()=>{['pdfjs/pdf.min.js','pdfjs/pdf.worker.min.js'].forEach(u=>fetch(u).catch(()=>{}));},3000);  // für offline in den Cache
 
 </script>
 <script>
